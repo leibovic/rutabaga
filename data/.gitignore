@@ -1,0 +1,3 @@
+# Ignore files that contain data.
+*.sqlite
+*.csv

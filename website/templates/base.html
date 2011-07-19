@@ -1,0 +1,92 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>{% block title %}{% endblock %}Alpha Chi Omega &ndash; Theta Omicron Chapter</title>
+  <meta name="description" content="The official website of Theta Omicron Chapter of Alpha Chi Omega, chartered at MIT in 1986.">
+  <meta name="author" content="Alpha Chi Omega - Theta Omicron">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="{{domain}}/static/favicon.ico">
+
+  <!-- CSS: implied media="all" -->
+  <link rel="stylesheet" href="{{domain}}/static/css/style.css">
+
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  <script src="{{domain}}/static/js/libs/modernizr-1.7.min.js"></script>
+
+</head>
+
+<body>
+
+  <div id="container">
+    <header>
+      <span id="title">{% block header %}<a href="/">Alpha Chi Omega &ndash; Theta Omicron Chapter at MIT</a>{% endblock %}</span>
+      <span id="login-info">
+        {% if user.first_name %}
+          Welcome, {{ user.first_name }}. <a href="/accounts/logout">Log out</a>.
+        {% else %}
+          You are not logged in. <a href="/accounts/login">Log in</a>.
+        {% endif %}
+      </span>
+    </header>
+    <div id="navigation">
+      <a href="/about">About</a>
+      <a href="/sisters">Sisters</a>
+      <a href="/philanthropy">Philanthropy</a>
+      <a href="/social">Social</a>
+      <a href="/recruitment">Recruitment</a>
+      <a href="/parents">Parents</a>
+      <a href="/alumnae">Alumnae</a>
+			<a href="/sistersonly">Sisters Only</a>
+    </div>
+    <div id="main" role="main">
+      {% block main %}{% endblock %}
+    </div>
+    <footer>
+      {% block footer %}
+        &copy;2011&ndash; AXΩ ΘΟ
+        <a href="/">Home</a>
+			  <a href="http://web.mit.edu/">MIT</a>
+			  <a href="http://web.mit.edu/panhel/www/">Panhel</a>
+			  <a href="http://www.alphachiomega.org">Alpha Chi Omega</a>
+			  <a href="/contact">Contact</a>
+      {% endblock %}
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+  <script>window.jQuery || document.write("<script src='js/libs/jquery-1.5.1.min.js'>\x3C/script>")</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script src="{{domain}}/static/js/plugins.js"></script>
+  <script src="{{domain}}/static/js/script.js"></script>
+  <!-- end scripts-->
+
+  <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
+  <script>
+    var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+    g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+    s.parentNode.insertBefore(g,s)}(document,"script"));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Sisters &ndash; {% endblock %}
+
+{% block main %}
+<ul>
+{% for sister in sisters %}
+  <li>{{ sister.user.first_name }} {{ sister.user.last_name }}: {{ sister.class_year }} {{ sister.residence }}</li>
+{% endfor %}
+</ul>
+{% endblock %}
