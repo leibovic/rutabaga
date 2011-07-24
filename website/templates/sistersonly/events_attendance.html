@@ -1,0 +1,33 @@
+{% extends "sistersonly/base.html" %}
+
+{% block title %}Event Attendance &ndash; {% endblock %}
+
+{% block main %}
+<div class="content">
+  <h1>{{ event.name }} ({{ event.date }})</h1>
+
+  {% if updated %}
+  <p>Attendance for this event was successfully updated.</p>
+  {% endif %}
+
+  <form method="post" action="">
+    {% csrf_token %}
+    <p><a href="#" onclick="selectAll();">Select All</a> | <a href="#" onclick="selectNone();">Select None</a></p>
+    <table class="data-table">
+      <tr>
+        <th>Class Year</th>
+        <th>Sister</th>
+        <th>Present</th>
+      </tr>
+    {% for sister in sisters|dictsort:"user.last_name"|dictsort:"class_year" %}
+      <tr class="sister-row">
+        <td>{{ sister.class_year }}</td>
+        <td>{{ sister.full_name }}</td>
+        <td><input type="checkbox" {% if sister in event.sisters.all %}checked="true"{% endif %} value="true" name="{{ sister.id }}"/></td>
+      </tr>
+    {% endfor %}
+    </table>
+    <p><input type="submit" value="Update attendance"/></p>
+  </form>
+</div>
+{% endblock %}

@@ -15,14 +15,28 @@ urlpatterns = patterns('',
     url(r'^alumnae/$', 'website.views.alumnae'),
     url(r'^contact/$', 'website.views.contact'),
 
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'accounts/login.html'}),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
-    url(r'^accounts/change/$', 'django.contrib.auth.views.password_change', {'template_name': 'password_change.html', 'post_change_redirect': '/'}),
-    url(r'^accounts/reset/$', 'django.contrib.auth.views.password_reset', {'template_name': 'password_reset.html', 'email_template_name': 'password_reset_email.html'}),
-    url(r'^accounts/reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm', {'template_name': 'password_reset_confirm.html', 'post_reset_redirect' : '/accounts/login/'}),
-    url(r'^accounts/reset/done/$', 'django.contrib.auth.views.password_reset_done', {'template_name': 'password_reset_done.html'}),
+    url(r'^accounts/change/$', 'django.contrib.auth.views.password_change', {'template_name': 'accounts/password_change.html', 'post_change_redirect': '/accounts/change/done/'}),
+    url(r'^accounts/change/done/$', 'django.contrib.auth.views.password_change_done', {'template_name': 'accounts/password_change_done.html'}),
+    url(r'^accounts/reset/$', 'django.contrib.auth.views.password_reset', {'template_name': 'accounts/password_reset.html', 'email_template_name': 'password_reset_email.html'}),
+    url(r'^accounts/reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm', {'template_name': 'accounts/password_reset_confirm.html', 'post_reset_redirect' : '/accounts/login/'}),
+    url(r'^accounts/reset/done/$', 'django.contrib.auth.views.password_reset_done', {'template_name': 'accounts/password_reset_done.html'}),
 
     url(r'^sistersonly/$', 'website.views.sistersonly'),
+    url(r'^sistersonly/directory/$', 'website.views.sistersonly_directory'),
+    url(r'^sistersonly/directory/(\d+)/$', 'website.views.sistersonly_profile'),
+    url(r'^sistersonly/house/$', 'website.views.sistersonly_house'),
+    url(r'^sistersonly/finance/$', 'website.views.sistersonly_finance'),
+    url(r'^sistersonly/recruitment/$', 'website.views.sistersonly_recruitment'),
+    url(r'^sistersonly/communications/$', 'website.views.sistersonly_communications'),
+    url(r'^sistersonly/elections/$', 'website.views.sistersonly_elections'),
+    url(r'^sistersonly/resources/$', 'website.views.sistersonly_resources'),
+
+    url(r'^sistersonly/events/$', 'website.views.sistersonly_events'),
+    url(r'^sistersonly/events/(\d+)/$', 'website.views.sistersonly_events_attendance'),
+
+    url(r'^sistersonly/feedback/$', 'website.views.sistersonly_feedback'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

@@ -175,8 +175,14 @@ a:hover { color: #036; }
   width: 75%;
 }
 
+/* header and footer */
+
 header {
   padding: 10px 0;
+}
+
+header a {
+  text-decoration: none;
 }
 
 #title {
@@ -189,15 +195,6 @@ header {
   float: right;
 }
 
-#navigation {
-  margin-bottom: 10px;
-}
-
-#navigation a {
-  margin-right: 0.5em;
-  text-decoration: none;
-}
-
 footer {
   padding: 10px 0;
   text-align: center;
@@ -208,12 +205,60 @@ footer a {
   text-decoration: none;
 }
 
+/* navigation */
+
+.navigation {
+  padding: 5px 0;
+}
+
+.navigation > a {
+  padding: 5px 0;
+  margin-right: 0.5em;
+  text-decoration: none;
+}
+
+.navigation > .current {
+  color: #036;
+}
+
+#sisters-only-navigation {
+  background-color: #607890;
+}
+
+#sisters-only-navigation > a {
+  color: #fff;
+  margin-left: 0.5em;
+}
+
+#sisters-only-navigation > a:hover,
+#sisters-only-navigation > a.current {
+  color: #036;
+}
+
+#breadcrumbs {
+  margin-bottom: 10px;
+}
+
+#breadcrumbs a {
+  text-decoration: none;
+}
+
+/* content */
+
 .content {
   
 }
 
-.content p {
+.content h1 {
+  margin: 5px 0;
+}
 
+.content h2 {
+  margin: 5px 0;
+}
+
+.content p {
+  padding: 5px 0;
 }
 
 img {
@@ -222,8 +267,52 @@ img {
 
 .inline-image {
   max-width: 25%;
-  /*position: relative;
-  float: left;*/
+}
+
+/* accounts */
+
+.form-table td {
+  padding: 3px;
+  vertical-align: bottom;
+}
+
+/* sisters only */
+
+#feedback-textarea {
+  width: 500px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+#calendar {
+  width: 100%;
+  height: 600px;
+}
+
+#calendarTitle {
+  display: none;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 5px 10px 5px 3px;
+}
+
+.data-table td {
+  padding: 3px 10px 3px 3px;
+}
+
+.sister-row:hover {
+  background-color: #036;
+  color: #fff;
+}
+
+.sister-row:hover a {
+  color: #fff;
+}
+
+.profile-label {
+  font-weight: bold;
 }
 
 /**

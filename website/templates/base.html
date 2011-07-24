@@ -33,24 +33,29 @@
 
   <div id="container">
     <header>
-      <span id="title">{% block header %}<a href="/">Alpha Chi Omega &ndash; Theta Omicron Chapter at MIT</a>{% endblock %}</span>
+      <a id="title" href="/">Alpha Chi Omega &ndash; Theta Omicron Chapter at MIT</a>
       <span id="login-info">
-        {% if user.first_name %}
-          Welcome, {{ user.first_name }}. <a href="/accounts/logout">Log out</a>.
+        {% if sister %}
+          Welcome, <a href="/sistersonly/directory/{{ sister.id }}/">{{ sister.user.first_name }}</a>. <a href="/accounts/logout">Log out</a>.
         {% else %}
           You are not logged in. <a href="/accounts/login">Log in</a>.
         {% endif %}
       </span>
     </header>
-    <div id="navigation">
-      <a href="/about">About</a>
-      <a href="/sisters">Sisters</a>
-      <a href="/philanthropy">Philanthropy</a>
-      <a href="/social">Social</a>
-      <a href="/recruitment">Recruitment</a>
-      <a href="/parents">Parents</a>
-      <a href="/alumnae">Alumnae</a>
-			<a href="/sistersonly">Sisters Only</a>
+    <div class="navigation">
+      <!-- location attribute is the path stripped of '/' (used to indicate current page)-->
+      <a location="about" href="/about">About</a>
+      <a location="sisters" href="/sisters">Sisters</a>
+      <a location="philanthropy" href="/philanthropy">Philanthropy</a>
+      <a location="social" href="/social">Social</a>
+      <a location="recruitment" href="/recruitment">Recruitment</a>
+      <a location="parents" href="/parents">Parents</a>
+      <a location="alumnae" href="/alumnae">Alumnae</a>
+      <a location="sistersonly" href="/sistersonly">Sisters Only</a>
+    </div>
+    {% block sisters_only_navigation %}{% endblock %}
+    <div id="breadcrumbs">
+       {% block breadcrumbs %}{% endblock %}
     </div>
     <div id="main" role="main">
       {% block main %}{% endblock %}
@@ -86,6 +91,15 @@
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
     g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
     s.parentNode.insertBefore(g,s)}(document,"script"));
+    
+    {% if current_page %}
+      $(function(){
+        $(".navigation > a[location={{ current_page }}]").addClass("current");
+      });
+    {% endif %}
+
+    function selectAll() { $("input[type=checkbox]").attr("checked", true); }
+    function selectNone() { $("input[type=checkbox]").attr("checked", false); }
   </script>
 
 </body>

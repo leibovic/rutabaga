@@ -9,7 +9,7 @@ STATUS = (
 )
 
 class Residence(models.Model):
-  name = models.TextField()
+  name = models.CharField(max_length=100)
 
   def __unicode__(self):
     return unicode(self.name)
@@ -33,3 +33,14 @@ class Sister(models.Model):
 
   def __unicode__(self):
     return unicode("%s %s" % (self.user.first_name, self.user.last_name))
+
+class Event(models.Model):
+  name = models.CharField(max_length=100)
+  date = models.DateField()
+  points = models.IntegerField()
+
+  # The sisters who were at the event
+  sisters = models.ManyToManyField(Sister, blank=True)
+
+  def __unicode__(self):
+    return unicode("%s (%s)" % (self.name, self.date))

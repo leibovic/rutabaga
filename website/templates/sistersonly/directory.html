@@ -1,0 +1,29 @@
+{% extends "sistersonly/base.html" %}
+{% load website_extras %}
+
+{% block title %}Directory &ndash; {% endblock %}
+
+{% block main %}
+<div class="content">
+  <table class="data-table">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email Address</th>
+      <th>Phone Number</th>
+      <th>Class Year</th>
+      <th>Residence</th>
+    </tr>
+  {% for sister in sisters|dictsort:"user.last_name"|dictsort:"class_year" %}
+    <tr class="sister-row">
+      <td><a href="/sistersonly/directory/{{ sister.id }}/">{{ sister.user.first_name }}</a></td>
+      <td>{{ sister.user.last_name }}</td>
+      <td><a href="mailto:{{ sister.user.email }}"">{{ sister.user.email }}</a></td>
+      <td>{{ sister.phone_number|phone }}</td>
+      <td>{{ sister.class_year }}</td>
+      <td>{{ sister.residence }}</td>
+    </tr>
+  {% endfor %}
+  </table>
+</div>
+{% endblock %}

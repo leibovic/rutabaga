@@ -1,0 +1,19 @@
+{% extends "sistersonly/base.html" %}
+
+{% block title %}Feedback &ndash; {% endblock %}
+
+{% block main %}
+<div class="content">
+  <h1>Anonymous Feedback</h2>
+  <p>If you have comments or concerns about anything in our chapter please let Exec know! Any comments you have will be emailed anonymously to Exec, and we will do our best to address your concerns.</p>
+
+  {% if submitted %}<p>An email was sent to Exec. Thank you for your feedback!</p>{% endif %}
+  {% if error %}<p>Whoops! There was an error submitting feedback.</p>{% endif %}
+
+  <form method="post" action="/sistersonly/feedback/">
+    {% csrf_token %}
+    <div><textarea id="feedback-textarea" name="message"></textarea></div>
+    <input type="submit" value="Submit feedback" />
+  </form>
+</div>
+{% endblock %}
