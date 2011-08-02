@@ -3,18 +3,21 @@
 {% block title %}Events &ndash; {% endblock %}
 
 {% block main %}
+
 <div class="content">
   <table class="data-table">
     <tr>
       <th>Event</th>
       <th>Date</th>
       <th>Points</th>
+      <th>Your Attendance</th>
     </tr>
   {% for event in events %}
     <tr>
       <td><a href="{{ event.id }}/">{{ event.name }}</a></td>
       <td>{{ event.date }}</td>
       <td>{{ event.points }}</td>
+      <td>{% if sister in event.sisters %}Present{% else %}Absent{% endif %}</td>
     </tr>
   {% endfor %}
   </table>

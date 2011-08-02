@@ -6,6 +6,8 @@
 <div class="content">
   <h1>{{ event.name }} ({{ event.date }})</h1>
 
+<!-- Only let sisters with the appropriate permissions see this -->
+{% if perms.website.change_event %}
   {% if updated %}
   <p>Attendance for this event was successfully updated.</p>
   {% endif %}
@@ -29,5 +31,8 @@
     </table>
     <p><input type="submit" value="Update attendance"/></p>
   </form>
+{% else %}
+  <p>Sorry, you don't have permission to take attendance for this event.</p>
+{% endif %}
 </div>
 {% endblock %}

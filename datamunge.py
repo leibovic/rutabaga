@@ -34,7 +34,7 @@ class Data:
   BIO=18
 
 def add_sisters():
-  reader = csv.reader(open('../sisters.csv', 'rb'), delimiter=';')
+  reader = csv.reader(open('data/sisters.csv', 'rb'), delimiter=';')
   for row in reader:
     try:
       user = User.objects.get(username=row[Data.USERNAME])
