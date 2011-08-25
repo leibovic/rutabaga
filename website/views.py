@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.sites.models import Site
 from django.core.mail import send_mail
 from django.template import RequestContext
 
@@ -14,6 +15,10 @@ def get_context(request):
     except:
       pass
   context['current_page'] = request.path.replace('/', '')
+
+  current_site = Site.objects.get_current()
+  context['domain'] = current_site.domain
+
   return context
 
 ''' Page requests '''

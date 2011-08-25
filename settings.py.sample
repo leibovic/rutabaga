@@ -47,12 +47,12 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = '' # Add absolute path to static files here
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '' # Add url that handles static files
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -97,10 +97,6 @@ INSTALLED_APPS = (
     'website',
 )
 
-# Site settings.
-SITE_NAME = 'Alpha Chi Omega - Theta Omicron'
-SITE_DOMAIN = '' # Add site domain, e.g. 'axo.mit.edu'
-
 # Settings for django-registration module.
 ACCOUNT_ACTIVATION_DAYS = 7
 EMAIL_USE_TLS = True
@@ -110,7 +106,3 @@ EMAIL_HOST_PASSWORD = ''                  # Add host password
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = ''                   # Add email address, e.g. 'Alpha Chi Omega <axothetaomicon@gmail.com>'
 LOGIN_REDIRECT_URL = '/sistersonly/'
-
-# Absolute filesystem path to the directory that holds static files.
-# This should just be used for serving static files in development.
-# STATIC_DOC_ROOT = '' # Add static files directory path, e.g. '/Users/leibovic/code/rutabaga/static/'

@@ -44,3 +44,9 @@ class Event(models.Model):
 
   def __unicode__(self):
     return unicode("%s (%s)" % (self.name, self.date))
+
+class Content(models.Model):
+  # The name of the view function that will use this content.
+  view = models.CharField(max_length=100)
+
+  html = models.TextField(blank=True)
