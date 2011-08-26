@@ -4,7 +4,7 @@
 
 {% block main %}
 <ul>
-{% for sister in sisters %}
+{% for sister in sisters|dictsort:"sort_rank" %}
   <li>{{ sister.user.first_name }} {{ sister.user.last_name }}: {{ sister.class_year }} {{ sister.residence }}</li>
 {% endfor %}
 </ul>

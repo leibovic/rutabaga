@@ -14,7 +14,7 @@
       <th>Class Year</th>
       <th>Residence</th>
     </tr>
-  {% for sister in sisters|dictsort:"user.last_name"|dictsort:"class_year" %}
+  {% for sister in sisters|dictsort:"sort_rank" %}
     <tr class="sister-row">
       <td><a href="/sistersonly/directory/{{ sister.id }}/">{{ sister.user.first_name }}</a></td>
       <td>{{ sister.user.last_name }}</td>

@@ -21,10 +21,10 @@
         <th>Sister</th>
         <th>Present</th>
       </tr>
-    {% for sister in sisters|dictsort:"user.last_name"|dictsort:"class_year" %}
+    {% for sister in sisters|dictsort:"sort_rank" %}
       <tr class="sister-row">
         <td>{{ sister.class_year }}</td>
-        <td>{{ sister.full_name }}</td>
+        <td>{{ sister.user.last_name }}, {{ sister.user.first_name }}</td>
         <td><input type="checkbox" {% if sister in event.sisters.all %}checked="true"{% endif %} value="true" name="{{ sister.id }}"/></td>
       </tr>
     {% endfor %}

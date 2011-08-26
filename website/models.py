@@ -31,6 +31,11 @@ class Sister(models.Model):
     return "%s %s" % (self.user.first_name, self.user.last_name)
   full_name.short_description = 'Name'
 
+  # Rank used for sorting sisters by class year, then alphabetically
+  def sort_rank(self):
+    return "%s%s%s" % (self.class_year, self.user.last_name, self.user.first_name)
+  sort_rank.short_decription = 'Sort Rank'
+
   def __unicode__(self):
     return unicode("%s %s" % (self.user.first_name, self.user.last_name))
 
