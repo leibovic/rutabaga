@@ -5,9 +5,11 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.template import RequestContext
+from django.conf import settings
 
 def get_context(request):
   context = {}
+  context['user'] = request.user
   if request.user.is_authenticated():
     try:
       context['sister'] = Sister.objects.get(user=request.user)
@@ -95,8 +97,8 @@ def sistersonly_feedback(request):
   if request.method == 'POST':
     message = request.POST['message']
     try:
-      send_mail('Anonymous Sister Feedback', message, 'axothetaomicron@gmail.com',
-                ['margaret.leibovic@gmail.com'], fail_silently=False)
+      send_mail('Anonymous Sister Feedback', message, settings.DEFAULT_FROM_EMAIL,
+                [settings.FEEDBACK_EMAIL], fail_silently=False)
       context['submitted'] = True
     except:
       context['error'] = True

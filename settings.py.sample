@@ -76,6 +76,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'rutabaga.urls'
@@ -96,6 +97,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'website',
+    'django.contrib.flatpages',
 )
 
 # Settings for django-registration module.
@@ -107,3 +109,7 @@ EMAIL_HOST_PASSWORD = ''                  # Add host password
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = ''                   # Add email address, e.g. 'Alpha Chi Omega <axothetaomicon@gmail.com>'
 LOGIN_REDIRECT_URL = '/sistersonly/'
+
+# Email address that anonymous feedback will be sent to
+FEEDBACK_EMAIL = 'margaret.leibovic@gmail.com'
+

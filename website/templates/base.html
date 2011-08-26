@@ -35,8 +35,8 @@
     <header>
       <a id="title" href="/">Alpha Chi Omega &ndash; Theta Omicron Chapter at MIT</a>
       <span id="login-info">
-        {% if sister %}
-          Welcome, <a href="/sistersonly/directory/{{ sister.id }}/">{{ sister.user.first_name }}</a>. <a href="/accounts/logout">Log out</a>.
+        {% if user.first_name %}
+          Welcome, <a href="/sistersonly/">{{ user.first_name }}</a>. <a href="/accounts/logout">Log out</a>.
         {% else %}
           You are not logged in. <a href="/accounts/login">Log in</a>.
         {% endif %}
