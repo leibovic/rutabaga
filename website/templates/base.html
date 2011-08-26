@@ -33,25 +33,25 @@
 
   <div id="container">
     <header>
-      <a id="title" href="http://{{domain}}/">Alpha Chi Omega &ndash; Theta Omicron Chapter at MIT</a>
+      <a id="title" href="/">Alpha Chi Omega &ndash; Theta Omicron Chapter at MIT</a>
       <span id="login-info">
         {% if sister %}
-          Welcome, <a href="http://{{domain}}/sistersonly/directory/{{ sister.id }}/">{{ sister.user.first_name }}</a>. <a href="http://{{domain}}/accounts/logout">Log out</a>.
+          Welcome, <a href="/sistersonly/directory/{{ sister.id }}/">{{ sister.user.first_name }}</a>. <a href="/accounts/logout">Log out</a>.
         {% else %}
-          You are not logged in. <a href="http://{{domain}}/accounts/login">Log in</a>.
+          You are not logged in. <a href="/accounts/login">Log in</a>.
         {% endif %}
       </span>
     </header>
     <div class="navigation">
       <!-- location attribute is the path stripped of '/' (used to indicate current page)-->
-      <a location="about" href="http://{{domain}}/about">About</a>
-      <a location="sisters" href="http://{{domain}}/sisters">Sisters</a>
-      <a location="philanthropy" href="http://{{domain}}/philanthropy">Philanthropy</a>
-      <a location="social" href="http://{{domain}}/social">Social</a>
-      <a location="recruitment" href="http://{{domain}}/recruitment">Recruitment</a>
-      <a location="parents" href="http://{{domain}}/parents">Parents</a>
-      <a location="alumnae" href="http://{{domain}}/alumnae">Alumnae</a>
-      <a location="sistersonly" href="http://{{domain}}/sistersonly">Sisters Only</a>
+      <a location="about" href="/about">About</a>
+      <a location="sisters" href="/sisters">Sisters</a>
+      <a location="philanthropy" href="/philanthropy">Philanthropy</a>
+      <a location="social" href="/social">Social</a>
+      <a location="recruitment" href="/recruitment">Recruitment</a>
+      <a location="parents" href="/parents">Parents</a>
+      <a location="alumnae" href="/alumnae">Alumnae</a>
+      <a location="sistersonly" href="/sistersonly">Sisters Only</a>
     </div>
     {% block sisters_only_navigation %}{% endblock %}
     <div id="breadcrumbs">
@@ -63,11 +63,11 @@
     <footer>
       {% block footer %}
         &copy;2011&ndash; AXΩ ΘΟ
-        <a href="http://{{domain}}/">Home</a>
+        <a href="/">Home</a>
 			  <a href="http://web.mit.edu/">MIT</a>
 			  <a href="http://web.mit.edu/panhel/www/">Panhel</a>
 			  <a href="http://www.alphachiomega.org">Alpha Chi Omega</a>
-			  <a href="http://{{domain}}/contact">Contact</a>
+			  <a href="/contact">Contact</a>
       {% endblock %}
     </footer>
   </div> <!--! end of #container -->

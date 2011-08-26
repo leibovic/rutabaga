@@ -16,7 +16,7 @@
     </tr>
   {% for sister in sisters|dictsort:"user.last_name"|dictsort:"class_year" %}
     <tr class="sister-row">
-      <td><a href="http://{{domain}}/sistersonly/directory/{{ sister.id }}/">{{ sister.user.first_name }}</a></td>
+      <td><a href="/sistersonly/directory/{{ sister.id }}/">{{ sister.user.first_name }}</a></td>
       <td>{{ sister.user.last_name }}</td>
       <td><a href="mailto:{{ sister.user.email }}"">{{ sister.user.email }}</a></td>
       <td>{{ sister.phone_number|phone }}</td>
