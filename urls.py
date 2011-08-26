@@ -6,14 +6,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', 'website.views.index'),
-    url(r'^about/$', 'website.views.about'),
     url(r'^sisters/$', 'website.views.sisters'),
-    url(r'^philanthropy/$', 'website.views.philanthropy'),
-    url(r'^social/$', 'website.views.social'),
-    url(r'^recruitment/$', 'website.views.recruitment'),
-    url(r'^parents/$', 'website.views.parents'),
-    url(r'^alumnae/$', 'website.views.alumnae'),
     url(r'^contact/$', 'website.views.contact'),
 
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'accounts/login.html'}),
@@ -25,18 +18,11 @@ urlpatterns = patterns('',
     url(r'^accounts/reset/done/$', 'django.contrib.auth.views.password_reset_done', {'template_name': 'accounts/password_reset_done.html'}),
 
     url(r'^sistersonly/$', 'website.views.sistersonly'),
-    url(r'^sistersonly/directory/$', 'website.views.sistersonly_directory'),
-    url(r'^sistersonly/directory/(\d+)/$', 'website.views.sistersonly_profile'),
-    url(r'^sistersonly/house/$', 'website.views.sistersonly_house'),
-    url(r'^sistersonly/finance/$', 'website.views.sistersonly_finance'),
-    url(r'^sistersonly/recruitment/$', 'website.views.sistersonly_recruitment'),
-    url(r'^sistersonly/communications/$', 'website.views.sistersonly_communications'),
-    url(r'^sistersonly/elections/$', 'website.views.sistersonly_elections'),
-    url(r'^sistersonly/resources/$', 'website.views.sistersonly_resources'),
-
     url(r'^sistersonly/events/$', 'website.views.sistersonly_events'),
     url(r'^sistersonly/events/(\d+)/$', 'website.views.sistersonly_events_attendance'),
-
+    url(r'^sistersonly/directory/$', 'website.views.sistersonly_directory'),
+    url(r'^sistersonly/directory/(\d+)/$', 'website.views.sistersonly_profile'),
+    url(r'^sistersonly/elections/$', 'website.views.sistersonly_elections'),
     url(r'^sistersonly/feedback/$', 'website.views.sistersonly_feedback'),
 
     # Uncomment the admin/doc line below to enable admin documentation:

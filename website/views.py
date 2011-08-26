@@ -18,39 +18,11 @@ def get_context(request):
 
 ''' Page requests '''
 
-def index(request):
-  context = get_context(request)
-  return render_to_response('index.html', context)
-
-def about(request):
-  context = get_context(request)
-  return render_to_response('about.html', context)
-
 def sisters(request):
   context = get_context(request)
   # Exclude alums and PRCs. Is there a way to get this from the STATUS data structure in models.py?
   context['sisters'] = Sister.objects.exclude(status=1).exclude(status=3)
   return render_to_response('sisters.html', context)
-
-def philanthropy(request):
-  context = get_context(request)
-  return render_to_response('philanthropy.html', context)
-
-def social(request):
-  context = get_context(request)
-  return render_to_response('social.html', context)
-
-def recruitment(request):
-  context = get_context(request)
-  return render_to_response('recruitment.html', context)
-
-def parents(request):
-  context = get_context(request)
-  return render_to_response('parents.html', context)
-
-def alumnae(request):
-  context = get_context(request)
-  return render_to_response('alumnae.html', context)
 
 def contact(request):
   context = get_context(request)
@@ -88,30 +60,9 @@ def sistersonly_house(request):
   return render_to_response('sistersonly/house.html', context)
 
 @login_required
-def sistersonly_finance(request):
-  context = get_context(request)
-  return render_to_response('sistersonly/finance.html', context)
-
-@login_required
-def sistersonly_recruitment(request):
-  context = get_context(request)
-  return render_to_response('sistersonly/recruitment.html', context)
-
-@login_required
-def sistersonly_communications(request):
-  context = get_context(request)
-  return render_to_response('sistersonly/communications.html', context)
-
-@login_required
 def sistersonly_elections(request):
   context = get_context(request)
   return render_to_response('sistersonly/elections.html', context)
-
-@login_required
-def sistersonly_resources(request):
-  context = get_context(request)
-  return render_to_response('sistersonly/resources.html', context)
-
 
 @login_required
 def sistersonly_events(request):
