@@ -8,7 +8,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^sisters/$', 'website.views.sisters'),
     url(r'^sisters/(\d+)/$', 'website.views.sisters_profile'),
-    url(r'^contact/$', 'website.views.contact'),
 
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'accounts/login.html'}),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
