@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-  <link rel="shortcut icon" href="/static/favicon.ico">
+  <link rel="icon" sizes="64" href="/static/lrye.png">
 
   <!-- CSS: implied media="all" -->
   <link rel="stylesheet" href="/static/css/style.css">
@@ -33,7 +33,9 @@
 
   <div id="container">
     <header>
-      <a id="title" href="/">Alpha Chi Omega &ndash; Theta Omicron Chapter at MIT</a>
+      <a id="title" href="/">
+        <img src="/static/banner.png" class="banner" alt="Alpha Chi Omega: Theta Omicron Chapter at MIT"/>
+      </a>
       <span id="login-info">
         {% if user.first_name %}
           Welcome, <a href="/sistersonly/">{{ user.first_name }}</a>. <a href="/accounts/logout">Log out</a>.
@@ -54,9 +56,6 @@
       <a location="sistersonly" href="/sistersonly">Sisters Only</a>
     </div>
     {% block sisters_only_navigation %}{% endblock %}
-    <div id="breadcrumbs">
-       {% block breadcrumbs %}{% endblock %}
-    </div>
     <div id="main" role="main">
       {% block main %}{% endblock %}
     </div>

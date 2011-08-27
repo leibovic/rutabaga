@@ -158,8 +158,8 @@ body, select, input, textarea {
 /* Headers (h1, h2, etc) have no default font-size or margin; define those yourself */
 h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 
-a, a:active, a:visited { color: #607890; }
-a:hover { color: #036; }
+a, a:active, a:visited { color: #495c23; }
+a:hover { color: #bc4956; }
 
 
 /**
@@ -178,16 +178,11 @@ a:hover { color: #036; }
 /* header and footer */
 
 header {
-  padding: 10px 0;
+  padding-top: 10px;
 }
 
 header a {
   text-decoration: none;
-}
-
-#title {
-  font-size: 1.3em;
-  font-weight: bold;
 }
 
 #login-info {
@@ -209,6 +204,7 @@ footer a {
 
 .navigation {
   padding: 5px 0;
+  font-size: 1.1em;
 }
 
 .navigation > a {
@@ -218,11 +214,13 @@ footer a {
 }
 
 .navigation > .current {
-  color: #036;
+  color: #bc4956;
 }
 
 #sisters-only-navigation {
-  background-color: #607890;
+  background-color: #bc4956;
+  margin-bottom: 10px;
+  font-size: 1em;
 }
 
 #sisters-only-navigation > a {
@@ -232,16 +230,9 @@ footer a {
 
 #sisters-only-navigation > a:hover,
 #sisters-only-navigation > a.current {
-  color: #036;
+  color: #d8c268;
 }
 
-#breadcrumbs {
-  margin-bottom: 10px;
-}
-
-#breadcrumbs a {
-  text-decoration: none;
-}
 
 /* content */
 
@@ -303,7 +294,7 @@ img {
 }
 
 .sister-row:hover {
-  background-color: #036;
+  background-color: #495C23;
   color: #fff;
 }
 
