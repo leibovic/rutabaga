@@ -92,11 +92,10 @@
     g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
     s.parentNode.insertBefore(g,s)}(document,"script"));
     
-    {% if current_page %}
-      $(function(){
-        $(".navigation > a[location={{ current_page }}]").addClass("current");
-      });
-    {% endif %}
+    $(function(){
+      var location = document.location.pathname.replace(/\//g, "");
+      $(".navigation > a[location='" + location + "']").addClass("current");
+    });
 
     function selectAll() { $("input[type=checkbox]").attr("checked", true); }
     function selectNone() { $("input[type=checkbox]").attr("checked", false); }

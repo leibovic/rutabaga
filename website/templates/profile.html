@@ -1,4 +1,4 @@
-{% extends "sistersonly/base.html" %}
+{% extends "base.html" %}
 {% load website_extras %}
 
 {% block title %}{{ profile_sister.full_name }} &ndash; {% endblock %}
@@ -8,20 +8,8 @@
   <h1>{{ profile_sister.full_name }}</h1>
   <table class="data-table">
     <tr>
-      <td class="profile-label">Email Address</td>
-      <td>{{ profile_sister.user.email }}</td>
-    </tr>
-    <tr>
-      <td class="profile-label">Phone Number</td>
-      <td>{{ profile_sister.phone_number|phone }}</td>
-    </tr>
-    <tr>
       <td class="profile-label">Class Year</td>
       <td>{{ profile_sister.class_year }}</td>
-    </tr>
-    <tr>
-      <td class="profile-label">Residence</td>
-      <td>{{ profile_sister.residence }}</td>
     </tr>
     <tr>
       <td class="profile-label">Hometown</td>
@@ -40,8 +28,5 @@
       <td><img src="http://axo.scripts.mit.edu/{{ profile_sister.photo_url }}"/></td>
     </tr>
   </table>
-  {% if profile_sister == sister %}
-    <a href="/accounts/change/">Change your password</a>
-  {% endif %}
 </div>
 {% endblock %}

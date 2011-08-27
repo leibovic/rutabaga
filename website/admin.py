@@ -15,9 +15,3 @@ class EventAdmin(admin.ModelAdmin):
   list_display = ('name', 'date', 'points')
 
 admin.site.register(Event, EventAdmin)
-
-# Content
-class ContentAdmin(admin.ModelAdmin):
-  list_display = ('view', 'html')
-
-admin.site.register(Content, ContentAdmin)

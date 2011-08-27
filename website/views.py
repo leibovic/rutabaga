@@ -15,7 +15,6 @@ def get_context(request):
       context['sister'] = Sister.objects.get(user=request.user)
     except:
       pass
-  context['current_page'] = request.path.replace('/', '')
   return context
 
 ''' Page requests '''
@@ -26,17 +25,18 @@ def sisters(request):
   context['sisters'] = Sister.objects.exclude(status=1).exclude(status=3)
   return render_to_response('sisters.html', context)
 
+def sisters_profile(request, sister_id):
+  context = get_context(request)
+  context['profile_sister'] = Sister.objects.get(id=sister_id)
+  return render_to_response('profile.html', context)
+
+
 def contact(request):
   context = get_context(request)
   return render_to_response('contact.html', context)
 
 
 ''' Sisters only pages '''
-
-@login_required
-def sistersonly(request):
-  context = get_context(request)
-  return render_to_response('sistersonly/index.html', context)
 
 @login_required
 def sistersonly_profile(request, sister_id):

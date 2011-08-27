@@ -3,9 +3,16 @@
 {% block title %}Sisters &ndash; {% endblock %}
 
 {% block main %}
-<ul>
-{% for sister in sisters|dictsort:"sort_rank" %}
-  <li>{{ sister.user.first_name }} {{ sister.user.last_name }}: {{ sister.class_year }} {{ sister.residence }}</li>
+
+{% regroup sisters|dictsort:"class_year" by class_year as class_year_list %}
+
+{% for class_year in class_year_list %}
+  <h2>{{ class_year.grouper }}</h2>
+  <ul>
+  {% for sister in class_year.list|dictsort:"sort_rank" %}
+    <li><a href="/sisters/{{ sister.id }}/">{{ sister.full_name }}</a></li>
+  {% endfor %}
+  </ul>
 {% endfor %}
-</ul>
+
 {% endblock %}
