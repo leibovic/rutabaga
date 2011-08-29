@@ -295,6 +295,7 @@ img {
   position: relative;
   float: left;
   padding-left: 15px;
+  max-width: 585px;
 }
 
 .sister-name {
