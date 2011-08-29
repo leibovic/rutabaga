@@ -20,7 +20,6 @@ urlpatterns = patterns('',
     url(r'^sistersonly/events/$', 'website.views.sistersonly_events'),
     url(r'^sistersonly/events/(\d+)/$', 'website.views.sistersonly_events_attendance'),
     url(r'^sistersonly/directory/$', 'website.views.sistersonly_directory'),
-    url(r'^sistersonly/directory/(\d+)/$', 'website.views.sistersonly_profile'),
     url(r'^sistersonly/elections/$', 'website.views.sistersonly_elections'),
     url(r'^sistersonly/feedback/$', 'website.views.sistersonly_feedback'),
 

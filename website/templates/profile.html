@@ -4,29 +4,35 @@
 {% block title %}{{ profile_sister.full_name }} &ndash; {% endblock %}
 
 {% block main %}
-<div class="content">
-  <h1>{{ profile_sister.full_name }}</h1>
-  <table class="data-table">
-    <tr>
-      <td class="profile-label">Class Year</td>
-      <td>{{ profile_sister.class_year }}</td>
-    </tr>
-    <tr>
-      <td class="profile-label">Hometown</td>
-      <td>{{ profile_sister.hometown }}</td>
-    </tr>
-    <tr>
-      <td class="profile-label">Bio</td>
-      <td>{{ profile_sister.bio }}</td>
-    </tr>
-    <tr>
-      <td class="profile-label">Interests</td>
-      <td>{{ profile_sister.interests }}</td>
-    </tr>
-    <tr>
-      <td class="profile-label">Photo</td>
-      <td><img src="http://axo.scripts.mit.edu/{{ profile_sister.photo_url }}"/></td>
-    </tr>
-  </table>
+<div class="sister-profile-container">
+  <div class="sister-photo-container">
+    <img class="sister-photo" src="http://axo.scripts.mit.edu/{{ profile_sister.photo_url }}"/>
+  </div>
+  <div class="sister-details-container">
+    <h1 class="sister-name">{{ profile_sister.full_name }}</h1>
+    {% if profile_sister == sister %}
+    <h2><a href="/accounts/change/">Edit your profile</a></h2>
+    {% endif %}
+    <dl>
+      <dt>Class Year:</dt>
+      <dd>{{ profile_sister.class_year }}</dd>
+      <dt>Major:</dt>
+      <dd><!--{{ profile_sister.major }}--></dd>
+      <dt>Hometown:</dt>
+      <dd>{{ profile_sister.hometown }}</dd>
+      <dt>Bio:</dt>
+      <dd>{{ profile_sister.bio }}</dd>
+      <dt>Interests:</dt>
+      <dd>{{ profile_sister.interests }}</dd>
+    </dl>
+    {% if user.first_name %}
+    <dl>
+      <dt>Email:</dt>
+      <dd>{{ profile_sister.user.email }}</dd>
+      <dt>Phone Number:</dt>
+      <dd>{{ profile_sister.phone_number }}</dd>
+    </dl>  
+    {% endif %}
+  </div>
 </div>
 {% endblock %}

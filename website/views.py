@@ -33,27 +33,11 @@ def sisters_profile(request, sister_id):
 ''' Sisters only pages '''
 
 @login_required
-def sistersonly_profile(request, sister_id):
-  context = get_context(request)
-  context['profile_sister'] = Sister.objects.get(id=sister_id)
-  return render_to_response('sistersonly/profile.html', context)
-
-@login_required
 def sistersonly_directory(request):
   context = get_context(request)
   # Exclude alums
   context['sisters'] = Sister.objects.exclude(status=1)
   return render_to_response('sistersonly/directory.html', context)
-
-@login_required
-def sistersonly_officers(request):
-  context = get_context(request)
-  return render_to_response('sistersonly/officers.html', context)
-
-@login_required
-def sistersonly_house(request):
-  context = get_context(request)
-  return render_to_response('sistersonly/house.html', context)
 
 @login_required
 def sistersonly_elections(request):

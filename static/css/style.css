@@ -130,11 +130,11 @@ input:invalid, textarea:invalid {
 /* These selection declarations have to be separate
    No text-shadow: twitter.com/miketaylr/status/12228805301
    Also: hot pink! */
-::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
-::selection { background:#FF5E99; color:#fff; text-shadow: none; }
+::-moz-selection{ background: #bc4956; color:#fff; text-shadow: none; }
+::selection { background:#bc4956; color:#fff; text-shadow: none; }
 
 /* j.mp/webkit-tap-highlight-color */
-a:link { -webkit-tap-highlight-color: #FF5E99; }
+a:link { -webkit-tap-highlight-color: #bc4956; }
 
 /* Make buttons play nice in IE:
    www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
@@ -205,6 +205,7 @@ footer a {
 .navigation {
   padding: 5px 0;
   font-size: 1.1em;
+  font-family: "American Typewriter";
 }
 
 .navigation > a {
@@ -256,8 +257,64 @@ img {
   max-width: 100%;
 }
 
-.inline-image {
-  max-width: 25%;
+.inline-image-left {
+  float: left;
+  margin-right: 10px;
+}
+
+.inline-image-right {
+  float: right;
+  margin-left: 15px;
+}
+
+.inline-image-caption {
+  font-size: 0.9em;
+  color: #666;
+  padding: 5px 0;
+  max-width: 200px;
+}
+
+/* sister profile */
+
+.sister-profile-container {
+  width: 800px;
+  height: 300px;
+  padding-top: 10px;
+}
+
+.sister-photo-container {
+  position: relative;
+  float: left;
+}
+
+.sister-photo {
+  width: 200px;
+}
+
+.sister-details-container {
+  position: relative;
+  float: left;
+  padding-left: 15px;
+}
+
+.sister-name {
+  font-size: 1.5em;
+  font-family: "American Typewriter";
+  margin-bottom: 5px;
+}
+
+.sister-details-container > dl > * {
+  float: left;
+  margin-top: 3px;
+}
+
+.sister-details-container > dl > dt {
+  font-weight: bold;
+  clear: left;
+}
+
+.sister-details-container > dl > dd {
+  margin-left: 5px;
 }
 
 /* accounts */
@@ -300,10 +357,6 @@ img {
 
 .sister-row:hover a {
   color: #fff;
-}
-
-.profile-label {
-  font-weight: bold;
 }
 
 /**
@@ -382,3 +435,10 @@ img {
   h2, h3{ page-break-after: avoid; }
 }
 
+/* Fonts */
+
+@font-face {
+  font-family: "American Typewriter";
+  src: local("American Typewriter"),
+       url("/static/fonts/AmericanTypewriter.ttf");
+}
