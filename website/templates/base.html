@@ -33,9 +33,6 @@
 
   <div id="container">
     <header>
-      <a id="title" href="/">
-        <img src="/static/banner.png" class="banner" alt="Alpha Chi Omega: Theta Omicron Chapter at MIT"/>
-      </a>
       <span id="login-info">
         {% if user.first_name %}
           Welcome, <a href="/sistersonly/">{{ user.first_name }}</a>. <a href="/accounts/logout">Log out</a>.
@@ -43,6 +40,9 @@
           You are not logged in. <a href="/accounts/login">Log in</a>.
         {% endif %}
       </span>
+      <a id="title" href="/">
+        <img src="/static/banner.png" class="banner" alt="Alpha Chi Omega: Theta Omicron Chapter at MIT"/>
+      </a>
     </header>
     <div class="navigation">
       <!-- location attribute is the path stripped of '/' (used to indicate current page)-->

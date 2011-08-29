@@ -17,7 +17,7 @@
       <dt>Class Year:</dt>
       <dd>{{ profile_sister.class_year }}</dd>
       <dt>Major:</dt>
-      <dd><!--{{ profile_sister.major }}--></dd>
+      <dd>{{ profile_sister.major }}</dd>
       <dt>Hometown:</dt>
       <dd>{{ profile_sister.hometown }}</dd>
       <dt>Bio:</dt>
@@ -28,9 +28,9 @@
     {% if user.first_name %}
     <dl>
       <dt>Email:</dt>
-      <dd>{{ profile_sister.user.email }}</dd>
+      <dd><a href="mailto:{{ profile_sister.user.email }}"">{{ profile_sister.user.email }}</a></dd>
       <dt>Phone Number:</dt>
-      <dd>{{ profile_sister.phone_number }}</dd>
+      <dd>{{ profile_sister.phone_number|phone }}</dd>
     </dl>  
     {% endif %}
   </div>
