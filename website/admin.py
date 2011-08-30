@@ -9,6 +9,7 @@ class SisterAdmin(admin.ModelAdmin):
 
 admin.site.register(Sister, SisterAdmin)
 admin.site.register(Residence)
+admin.site.register(Major)
 
 # Events
 class EventAdmin(admin.ModelAdmin):

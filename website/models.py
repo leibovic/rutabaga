@@ -15,6 +15,14 @@ class Residence(models.Model):
   def __unicode__(self):
     return unicode(self.name)
 
+class Major(models.Model):
+  number = models.CharField(max_length=10)
+  description = models.CharField(max_length=100)
+
+  def __unicode__(self):
+    return unicode("%s - %s" % (self.number, self.description))
+
+
 class Sister(models.Model):
   user = models.ForeignKey(User, unique=True)
   class_year = models.IntegerField()
@@ -22,6 +30,7 @@ class Sister(models.Model):
   photo_url = models.CharField(max_length=100, blank=True)
 
   residence = models.ForeignKey(Residence, null=True)
+  major = models.ForeignKey(Major, null=True)
   phone_number = models.CharField(max_length=10, blank=True)
 
   hometown = models.CharField(max_length=100, blank=True)
@@ -43,7 +52,7 @@ class Sister(models.Model):
 class SisterForm(ModelForm):
   class Meta:
     model = Sister
-    fields = ('phone_number', 'residence', 'hometown', 'bio', 'interests')
+    fields = ('phone_number', 'residence', 'major', 'hometown', 'bio', 'interests')
 
 class Event(models.Model):
   name = models.CharField(max_length=100)

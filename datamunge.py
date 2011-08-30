@@ -10,7 +10,7 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "settings"
 import csv
 import re
 from django.contrib.auth.models import User
-from website.models import Sister, Residence
+from website.models import Sister, Residence, Major
 
 def add_residences():
   reader = csv.reader(open('data/residences.csv', 'rb'), delimiter=';')
@@ -18,6 +18,13 @@ def add_residences():
     residence = Residence(name=unicode(row[0], "utf-8"))
     residence.save()
     print 'added residence to database:', residence
+
+def add_majors():
+  reader = csv.reader(open('data/majors.csv', 'rb'), delimiter=';')
+  for row in reader:
+    major = Major(number=row[0], description=row[1])
+    major.save()
+    print 'added major to database:', major
 
 class Data:
   ID=0
@@ -81,5 +88,6 @@ def add_sisters():
     sister.save()
     print 'added sister to database:', sister
 
-add_residences()
-add_sisters()
+#add_residences()
+add_majors()
+#add_sisters()
