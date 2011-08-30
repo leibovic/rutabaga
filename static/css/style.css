@@ -218,43 +218,55 @@ footer a {
   color: #bc4956;
 }
 
-#sisters-only-navigation {
+.secondary-navigation {
   background-color: #bc4956;
   margin-bottom: 10px;
   font-size: 1em;
+  padding: 5px 10px;
 }
 
-#sisters-only-navigation > a {
+.secondary-navigation > a {
   color: #fff;
+}
+
+.secondary-navigation > a:not(:first-child) {
   margin-left: 0.5em;
 }
 
-#sisters-only-navigation > a:hover,
-#sisters-only-navigation > a.current {
+.secondary-navigation > a:hover,
+.secondary-navigation > a.current {
   color: #d8c268;
 }
 
 
 /* content */
 
-.content {
+#main {
   
 }
 
-.content h1 {
+#main h1 {
   margin: 5px 0;
 }
 
-.content h2 {
+#main h2 {
   margin: 5px 0;
 }
 
-.content p {
+#main p {
   padding: 5px 0;
 }
 
 img {
   max-width: 100%;
+}
+
+.image-center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .inline-image-left {
@@ -274,7 +286,25 @@ img {
   max-width: 200px;
 }
 
-/* sister profile */
+/* sisters */
+
+#sister-table {
+  margin-top: 10px;
+  padding: 5px;
+  width: 100%;
+}
+
+#sister-table td {
+  padding-top: 3px;
+}
+
+.sister-list {
+  list-style: none;
+}
+
+.sister-list li {
+  margin-top: 3px;
+}
 
 .sister-profile-container {
   margin: 10px 0;
@@ -315,6 +345,10 @@ img {
 
 .form-submit {
   margin-top: 10px;
+}
+
+.error {
+  color: #bc4956;
 }
 
 /* sisters only */

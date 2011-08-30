@@ -6,13 +6,25 @@
 
 {% regroup sisters|dictsort:"class_year" by class_year as class_year_list %}
 
+<p>Our chapter is made up of a group of real, strong women with diverse interests and backgrounds. Check out all our members here!</p>
+
+<table id="sister-table">
+<tr>
 {% for class_year in class_year_list %}
-  <h2>{{ class_year.grouper }}</h2>
-  <ul>
-  {% for sister in class_year.list|dictsort:"sort_rank" %}
-    <li><a href="/sisters/{{ sister.id }}/">{{ sister.full_name }}</a></li>
-  {% endfor %}
-  </ul>
+  <th>Class of {{ class_year.grouper }}</th>
 {% endfor %}
+</tr>
+<tr>
+{% for class_year in class_year_list %}
+  <td>
+    <ul class="sister-list">
+    {% for sister in class_year.list|dictsort:"sort_rank" %}
+      <li><a href="/sisters/{{ sister.id }}/">{{ sister.full_name }}</a></li>
+    {% endfor %}
+    </ul>
+  </td>
+{% endfor %}
+</tr>
+</table>
 
 {% endblock %}
