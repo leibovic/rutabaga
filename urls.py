@@ -9,6 +9,8 @@ urlpatterns = patterns('',
     url(r'^sisters/$', 'website.views.sisters'),
     url(r'^sisters/(\d+)/$', 'website.views.sisters_profile'),
 
+    url(r'^sisters/profile/$', 'website.views.edit_profile'),
+
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'accounts/login.html'}),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
     url(r'^accounts/change/$', 'django.contrib.auth.views.password_change', {'template_name': 'accounts/password_change.html', 'post_change_redirect': '/accounts/change/done/'}),

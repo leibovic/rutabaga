@@ -4,35 +4,29 @@
 {% block title %}{{ profile_sister.full_name }} &ndash; {% endblock %}
 
 {% block main %}
-<div class="sister-profile-container">
-  <div class="sister-photo-container">
+<table class="sister-profile-container">
+  <tr>
+  <td class="sister-photo-container">
     <img class="sister-photo" src="http://axo.scripts.mit.edu/{{ profile_sister.photo_url }}"/>
-  </div>
-  <div class="sister-details-container">
+  </td>
+  <td class="sister-details-container">
     <h1 class="sister-name">{{ profile_sister.full_name }}</h1>
     {% if profile_sister == sister %}
-    <h2><a href="/accounts/change/">Edit your profile</a></h2>
+    <h2><a href="/sisters/profile/">Edit your profile</a></h2>
     {% endif %}
-    <dl>
-      <dt>Class Year:</dt>
-      <dd>{{ profile_sister.class_year }}</dd>
-      <dt>Major:</dt>
-      <dd>{{ profile_sister.major }}</dd>
-      <dt>Hometown:</dt>
-      <dd>{{ profile_sister.hometown }}</dd>
-      <dt>Bio:</dt>
-      <dd>{{ profile_sister.bio }}</dd>
-      <dt>Interests:</dt>
-      <dd>{{ profile_sister.interests }}</dd>
-    </dl>
+    <ul>
+      <li><strong>Class Year: </strong>{{ profile_sister.class_year }}</li>
+      <li><strong>Major: </strong>{{ profile_sister.major }}</li>
+      <li><strong>Hometown: </strong>{{ profile_sister.hometown }}</li>
+      <li><strong>Bio: </strong>{{ profile_sister.bio }}</li>
+      <li><strong>Interests: </strong>{{ profile_sister.interests }}</li>
     {% if user.first_name %}
-    <dl>
-      <dt>Email:</dt>
-      <dd><a href="mailto:{{ profile_sister.user.email }}"">{{ profile_sister.user.email }}</a></dd>
-      <dt>Phone Number:</dt>
-      <dd>{{ profile_sister.phone_number|phone }}</dd>
-    </dl>  
+      <li><strong>Email: </strong><a href="mailto:{{ profile_sister.user.email }}"">{{ profile_sister.user.email }}</a></li>
+      <li><strong>Phone Number: </strong>{{ profile_sister.phone_number|phone  }}</li>
+      <li><strong>Residence: </strong>{{ profile_sister.residence  }}</li>
     {% endif %}
-  </div>
-</div>
+    </ul>  
+  </td>
+  </tr>
+</table>
 {% endblock %}

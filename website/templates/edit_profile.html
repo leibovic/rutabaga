@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Profile &ndash; {% endblock %}
+
+{% block main %}
+<table class="sister-profile-container">
+  <tr>
+  <td class="sister-photo-container">
+    <img class="sister-photo" src="http://axo.scripts.mit.edu/{{ sister.photo_url }}"/>
+  </td>
+  <td class="sister-details-container">
+    <h1 class="sister-name">{{ sister.full_name }}</h1>
+    {% if form.errors %}
+    <h2 class="error">Sorry, there was a problem updating your profile. Please fix the errors below.</h2>
+    {% endif %}
+  
+    {% if success %}
+    <h2 class="success"><a href="/sisters/{{ sister.id }}"/>Your profile was updated sucessfully!</a></h2>
+    {% endif %}
+
+    <form method="post" action="">
+      {% csrf_token %}
+      <table class="form-table">
+        <tr><td>Class Year:</td><td>{{ sister.class_year }}</td></tr>
+        <tr><td>Major:</td><td>{{ form.major }}</td></tr>
+        <tr><td>Hometown:</td><td>{{ form.hometown }}</td></tr>
+        <tr><td>Bio:</td><td>{{ form.bio }}</td></tr>
+        <tr><td>Interests:</td><td>{{ form.interests }}</td></tr>
+        <tr><td>Email:</td><td><a href="mailto:{{ sister.user.email }}"">{{ sister.user.email }}</a></td></tr>
+        <tr><td>Phone Number:</td><td>{{ form.phone_number  }}</td></tr>
+        <tr><td>Residence:</td><td>{{ form.residence  }}</td></tr>
+      </table>
+      <input class="form-submit" type="submit" value="Update Profile"/>
+    </form>
+  </td>
+  </tr>
+</table>
+{% endblock %}

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import ModelForm
 
 STATUS = (
   (0, 'Active'),
@@ -39,6 +40,11 @@ class Sister(models.Model):
   def __unicode__(self):
     return unicode("%s %s" % (self.user.first_name, self.user.last_name))
 
+class SisterForm(ModelForm):
+  class Meta:
+    model = Sister
+    fields = ('phone_number', 'residence', 'hometown', 'bio', 'interests')
+
 class Event(models.Model):
   name = models.CharField(max_length=100)
   date = models.DateField()
@@ -49,9 +55,3 @@ class Event(models.Model):
 
   def __unicode__(self):
     return unicode("%s (%s)" % (self.name, self.date))
-
-class Content(models.Model):
-  # The name of the view function that will use this content.
-  view = models.CharField(max_length=100)
-
-  html = models.TextField(blank=True)
