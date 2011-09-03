@@ -1,5 +1,5 @@
 /**
- * HTML5 ✰ Boilerplate
+ * HTML5 â° Boilerplate
  *
  * style.css contains a reset, font normalization and some base styles.
  *
@@ -284,6 +284,37 @@ img {
   color: #666;
   padding: 5px 0;
   max-width: 200px;
+}
+
+/* main page */
+
+#main-table {
+  margin: 10px 0;
+}
+
+#intro-blurb {
+  width: 400px;
+  padding-right: 20px;
+}
+
+#upcoming-events {
+}
+
+#upcoming-events > ul {
+  list-style: none;
+  margin-left: 0;
+}
+
+#upcoming-events > ul > li {
+  font-size: 1.1em;
+  line-height: 1.4em;
+}
+
+.typewriter-header {
+  font-family: "American Typewriter";
+  font-size: 1.3em;
+  font-weight: normal;
+  color: #495c23;
 }
 
 /* sisters */
