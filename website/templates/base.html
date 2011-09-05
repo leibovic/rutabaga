@@ -44,17 +44,23 @@
         <img src="/static/banner.png" class="banner" alt="Alpha Chi Omega: Theta Omicron Chapter at MIT"/>
       </a>
     </header>
-    <div class="navigation">
       <!-- location attribute is the path stripped of '/' (used to indicate current page)-->
-      <a location="about" href="/about">About</a>
-      <a location="sisters" href="/sisters">Sisters</a>
-      <a location="philanthropy" href="/philanthropy">Philanthropy</a>
-      <a location="social" href="/social">Social</a>
-      <a location="recruitment" href="/recruitment">Recruitment</a>
-      <a location="parents" href="/parents">Parents</a>
-      <a location="alumnae" href="/alumnae">Alumnae</a>
-      <a location="sistersonly" href="/sistersonly">Sisters Only</a>
-    </div>
+    <ul class="navigation">
+      <li location="about"><a href="/about">About</a></li>
+      <li location="sisters"><a href="/sisters">Sisters</a></li>
+      <li location="philanthropy">
+        <a href="/philanthropy">Philanthropy</a>
+        <ul class="dropdown">
+          <li><a href="/philanthropy/dva">DVA Week</a></li>
+          <li><a href="/philanthropy/lipsync">Lip Sync</a></li>
+        </ul>
+      </li>
+      <li location="social"><a href="/social">Social</a></li>
+      <li location="recruitment"><a href="/recruitment">Recruitment</a></li>
+      <li location="parents"><a href="/parents">Parents</a></li>
+      <li location="alumnae"><a href="/alumnae">Alumnae</a></li>
+      <li location="sistersonly"><a href="/sistersonly">Sisters Only</a></li>
+    </ul>
     {% block secondary_navigation %}{% endblock %}
     <div id="main" role="main">
       {% block main %}{% endblock %}
@@ -93,7 +99,7 @@
     
     $(function(){
       var location = document.location.pathname.replace(/\//g, "");
-      $(".navigation > a[location='" + location + "']").addClass("current");
+      $(".navigation li[location='" + location + "']").addClass("selected");
     });
 
     function selectAll() { $("input[type=checkbox]").attr("checked", true); }

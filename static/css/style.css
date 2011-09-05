@@ -203,41 +203,80 @@ footer a {
 /* navigation */
 
 .navigation {
-  padding: 5px 0;
+  display: block;
+  margin: 0 0 5px 0;
+}
+
+.navigation li {
+  list-style: none;
+  position: relative;
+  white-space: nowrap;
+  padding: 0.3em 0.5em;
+  background-color: #9ca275;
+}
+
+.navigation .selected,
+.navigation li:hover {
+  background-color: #333;
+}
+
+/* display top-level li elements horizontally */
+.navigation > li {
+  display: inline-block;
+  text-align: center;
+  border-radius: 2px;
+  margin-bottom: 0.3em;
+}
+
+.navigation > li:hover {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.navigation a {
+  padding: 0.3em 0.5em;
   font-size: 1.1em;
-  font-family: "American Typewriter";
-}
-
-.navigation > a {
-  padding: 5px 0;
-  margin-right: 0.5em;
   text-decoration: none;
-}
-
-.navigation > .current {
-  color: #bc4956;
-}
-
-.secondary-navigation {
-  background-color: #bc4956;
-  margin-bottom: 10px;
-  font-size: 1em;
-  padding: 5px 10px;
-}
-
-.secondary-navigation > a {
+  font-family: "American Typewriter";
   color: #fff;
 }
 
-.secondary-navigation > a:not(:first-child) {
-  margin-left: 0.5em;
+.navigation .dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  visibility: hidden;
+  margin: 0;
+  z-index: 999;
 }
 
-.secondary-navigation > a:hover,
-.secondary-navigation > a.current {
-  color: #d8c268;
+/* make dropdown menus visible when parent li is hovered */
+.navigation li:hover > .dropdown {
+  visibility: visible;
 }
 
+.dropdown > li {
+  border-color: #333;
+  border-style: solid;
+  border-width: 0 1px 1px 1px;
+  text-align: left;
+}
+
+.dropdown > li:first-child {
+  border-width: 1px;
+}
+
+.dropdown > li:last-child {
+  border-radius: 0 0 2px 2px;
+}
+
+.secondary-navigation li {
+  background-color: #bc4956;
+}
+
+.secondary-navigation a {
+  font-size: 1em;
+}
 
 /* content */
 
@@ -293,7 +332,7 @@ img {
 }
 
 #intro-blurb {
-  width: 400px;
+  width: 50%;
   padding-right: 20px;
 }
 

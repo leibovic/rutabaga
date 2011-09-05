@@ -1,16 +1,20 @@
 {% extends "base.html" %}
 
 {% block secondary_navigation %}
-<div class="navigation secondary-navigation">
+<ul class="navigation secondary-navigation">
   <!-- location attribute is the path stripped of '/' (used to indicate current page)-->
-  <a location="sistersonlyevents" href="/sistersonly/events/">Events</a>
-  <a location="sistersonlydirectory" href="/sistersonly/directory/">Directory</a>
-  <a location="sistersonlyhouse" href="/sistersonly/house/">House</a>
-  <a location="sistersonlyfinance" href="/sistersonly/finance/">Finance</a>
-  <a location="sistersonlyrecruitment" href="/sistersonly/recruitment/">Recruitment</a>
-  <a location="sistersonlycommunications" href="/sistersonly/communications/">Communications</a>
-  <a location="sistersonlyelections" href="/sistersonly/elections/">Elections</a>
-  <a location="sistersonlyresources" href="/sistersonly/resources/">AXΩ Resources</a>
-  <a location="sistersonlyfeedback" href="/sistersonly/feedback/">Feedback</a>
-</div>
+  <li location="sistersonlyevents"><a href="/sistersonly/events/">Events</a></li>
+  <li location="sistersonlydirectory"><a href="/sistersonly/directory/">Directory</a></li>
+  <li location="sistersonlyelections"><a href="/sistersonly/elections/">Elections</a></li>
+  <li location="sistersonlyfeedback"><a href="/sistersonly/feedback/">Feedback</a></li>
+  <li location="sistersonlyresources">
+    <a href="/sistersonly/resources/">AXΩ Resources</a>
+    <ul class="dropdown">
+      <li><a href="/sistersonly/house/">House</a></li>
+      <li><a href="/sistersonly/finance/">Finance</a></li>
+      <li><a href="/sistersonly/recruitment/">Recruitment</a></li>    
+      <li><a href="/sistersonly/communication/">Communication</a></li>    
+    </ul>
+  </li>
+</ul>
 {% endblock %}
