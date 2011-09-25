@@ -1,11 +1,22 @@
 from website.models import *
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.template import RequestContext
 from django.conf import settings
+
+def secure_required(view_func):
+    """Decorator makes sure URL is accessed over https."""
+    def _wrapped_view_func(request, *args, **kwargs):
+        if not request.is_secure():
+            if getattr(settings, 'HTTPS_SUPPORT', True):
+                request_url = request.build_absolute_uri(request.get_full_path())
+                secure_url = request_url.replace('http://', 'https://')
+                return HttpResponseRedirect(secure_url)
+        return view_func(request, *args, **kwargs)
+    return _wrapped_view_func
 
 def get_context(request):
   context = {}
@@ -48,6 +59,7 @@ def edit_profile(request):
 
 ''' Sisters only pages '''
 
+@secure_required
 @login_required
 def sistersonly_directory(request):
   context = get_context(request)
