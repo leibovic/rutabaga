@@ -22,15 +22,14 @@ class Major(models.Model):
   def __unicode__(self):
     return unicode("%s - %s" % (self.number, self.description))
 
-
 class Sister(models.Model):
   user = models.ForeignKey(User, unique=True)
   class_year = models.IntegerField()
   status = models.IntegerField(choices=STATUS)
   photo_url = models.CharField(max_length=100, blank=True)
 
-  residence = models.ForeignKey(Residence, null=True)
-  major = models.ForeignKey(Major, null=True)
+  residence = models.ForeignKey(Residence, null=True, blank=True)
+  major = models.ForeignKey(Major, null=True, blank=True)
   phone_number = models.CharField(max_length=10, blank=True)
 
   hometown = models.CharField(max_length=100, blank=True)
@@ -64,3 +63,27 @@ class Event(models.Model):
 
   def __unicode__(self):
     return unicode("%s (%s)" % (self.name, self.date))
+
+'''
+class Office(models.Model):
+  title = models.CharField(max_length=100)
+  description = models.TextField(blank=True)
+  is_exec = models.BooleanField()
+  current_officer = models.ForeignKey(Sister, null=True)
+
+  def __unicode__(self):
+    return unicode("%s: %s" % (self.title, self.current_officer))
+
+class Candidate(models.Model):
+  sister = models.ForeignKey(Sister)
+  office = models.ForeignKey(Office)
+  loi = models.TextField(blank=True)
+
+  def __unicode__(self):
+    return unicode("%s: %s" % (self.office, self.sister))
+
+class Vote(models.Model):
+  sister = models.ForeignKey(Sister)
+  office = models.ForeignKey(Office)
+  candidate = models.ForeignKey(Candidate)
+'''
