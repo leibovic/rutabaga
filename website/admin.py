@@ -16,3 +16,7 @@ class EventAdmin(admin.ModelAdmin):
   list_display = ('name', 'date', 'points')
 
 admin.site.register(Event, EventAdmin)
+
+# Elections
+admin.site.register(Office)
+admin.site.register(Candidate)

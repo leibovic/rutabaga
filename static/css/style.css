@@ -284,7 +284,8 @@ footer a {
 }
 
 #main h1 {
-  margin: 5px 0;
+  margin: 15px 0 5px 0;
+  font-size: 1.1em;
 }
 
 #main h2 {
@@ -459,6 +460,16 @@ img {
 
 .sister-row:hover a {
   color: #fff;
+}
+
+/* elections */
+
+.ois-table td {
+  padding: 5px 5px 5px 0;
+}
+
+.ois-table .radio-row  {
+  border-bottom: 1px solid #ccc;
 }
 
 /**

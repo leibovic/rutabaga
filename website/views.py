@@ -68,11 +68,6 @@ def sistersonly_directory(request):
   return render_to_response('sistersonly/directory.html', context)
 
 @login_required
-def sistersonly_elections(request):
-  context = get_context(request)
-  return render_to_response('sistersonly/elections.html', context)
-
-@login_required
 def sistersonly_events(request):
   context = get_context(request)
   context['events'] = Event.objects.all()
@@ -110,4 +105,50 @@ def sistersonly_feedback(request):
       context['error'] = True
 
   return render_to_response('sistersonly/feedback.html', RequestContext(request, context))
+
+@login_required
+def sistersonly_elections(request):
+  context = get_context(request)
+  return render_to_response('sistersonly/elections.html', context)
+
+@secure_required
+@login_required
+def sistersonly_elections_ois(request):
+  context = get_context(request)
+  offices = Office.objects.filter(is_exec=True)
+
+  if request.method == 'POST':
+    sister = context['sister']
+    results = []
+    for office in offices:
+      try:
+        office_interest = OfficeInterest.objects.get(sister=sister, office=office)
+      except:
+        office_interest = OfficeInterest(sister=sister, office=office)
+      office_interest.interest = request.POST[str(office.id)]
+      office_interest.save()
+    context['submitted'] = True
+  else:
+    context['offices'] = offices
+
+  return render_to_response("sistersonly/elections_ois.html", RequestContext(request, context))
+
+@secure_required
+@login_required
+def sistersonly_elections_ois_results(request):
+  context = get_context(request)
+  context['results'] = OfficeInterest.objects.all()
+  return render_to_response('sistersonly/elections_ois_results.html', context)
+
+@secure_required
+@login_required
+def sistersonly_elections_loi(request):
+  context = get_context(request)
+  return render_to_response('sistersonly/elections_loi.html', context)
+
+@secure_required
+@login_required
+def sistersonly_elections_slating(request):
+  context = get_context(request)
+  return render_to_response('sistersonly/elections_slating.html', context)
 

@@ -22,8 +22,13 @@ urlpatterns = patterns('',
     url(r'^sistersonly/events/$', 'website.views.sistersonly_events'),
     url(r'^sistersonly/events/(\d+)/$', 'website.views.sistersonly_events_attendance'),
     url(r'^sistersonly/directory/$', 'website.views.sistersonly_directory'),
-    url(r'^sistersonly/elections/$', 'website.views.sistersonly_elections'),
     url(r'^sistersonly/feedback/$', 'website.views.sistersonly_feedback'),
+
+    url(r'^sistersonly/elections/$', 'website.views.sistersonly_elections'),
+    url(r'^sistersonly/elections/ois/$', 'website.views.sistersonly_elections_ois'),
+    url(r'^sistersonly/elections/ois/results/$', 'website.views.sistersonly_elections_ois_results'),
+    url(r'^sistersonly/elections/loi/$', 'website.views.sistersonly_elections_loi'),
+    url(r'^sistersonly/elections/slating/$', 'website.views.sistersonly_elections_slating'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

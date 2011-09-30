@@ -2,13 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 
-STATUS = (
-  (0, 'Active'),
-  (1, 'Alum'),
-  (2, 'New Member'),
-  (3, 'PRC')
-)
-
 class Residence(models.Model):
   name = models.CharField(max_length=100)
 
@@ -21,6 +14,13 @@ class Major(models.Model):
 
   def __unicode__(self):
     return unicode("%s - %s" % (self.number, self.description))
+
+STATUS = (
+  (0, 'Active'),
+  (1, 'Alum'),
+  (2, 'New Member'),
+  (3, 'PRC')
+)
 
 class Sister(models.Model):
   user = models.ForeignKey(User, unique=True)
@@ -64,26 +64,75 @@ class Event(models.Model):
   def __unicode__(self):
     return unicode("%s (%s)" % (self.name, self.date))
 
-'''
+TERMS = (
+  (0, 'Fall Election'),
+  (1, 'Spring Election'),
+  (2, 'Every Election')
+)
+
+TERM_LENGTH = (
+  (1, 'One Semester'),
+  (2, 'Two Semesters')
+)
+
+CLASSES = (
+  (0, 'All Classes'),
+  (1, 'Freshman'),
+  (2, 'Sophomore'),
+  (3, 'Junior'),
+  (4, 'Senior')
+)
+
 class Office(models.Model):
   title = models.CharField(max_length=100)
   description = models.TextField(blank=True)
-  is_exec = models.BooleanField()
-  current_officer = models.ForeignKey(Sister, null=True)
+  is_exec = models.BooleanField(default=False, verbose_name='Exec Position')
+  is_committee = models.BooleanField(default=False, verbose_name='Committee Position')
+
+  election_term = models.IntegerField(choices=TERMS, default=0)
+  term_length = models.IntegerField(choices=TERM_LENGTH, default=1)
+  # For positions that can only be held by a certain class year (e.g. CRSB Rep)
+  class_year = models.IntegerField(choices=CLASSES, default=0, verbose_name='Eligible Class Year')
+
+  current_officer = models.ForeignKey(Sister, blank=True, null=True)
 
   def __unicode__(self):
-    return unicode("%s: %s" % (self.title, self.current_officer))
+    return unicode(self.title)
+
+INTEREST_LEVELS = (
+  (0, 'No'),
+  (1, 'Yes'),
+  (2, 'Maybe')
+)
+
+class OfficeInterest(models.Model):
+  sister = models.ForeignKey(Sister)
+  office = models.ForeignKey(Office)
+  interest = models.IntegerField(choices=INTEREST_LEVELS, null=True)
+
+  def __unicode__(self):
+    return unicode("%s, %s" % (self.sister, self.office))
+
+class OfficeInterestForm(ModelForm):
+  class Meta:
+    model = OfficeInterest
+    fields = ('interest')
 
 class Candidate(models.Model):
-  sister = models.ForeignKey(Sister)
+  # Some positions can have more than one sister run as a candidate (i.e. committees)
+  sisters = models.ManyToManyField(Sister)
   office = models.ForeignKey(Office)
-  loi = models.TextField(blank=True)
+  loi = models.TextField()
 
   def __unicode__(self):
-    return unicode("%s: %s" % (self.office, self.sister))
+    return unicode("%s running for %s" % (self.sister, self.office))
 
 class Vote(models.Model):
-  sister = models.ForeignKey(Sister)
   office = models.ForeignKey(Office)
   candidate = models.ForeignKey(Candidate)
-'''
+
+  # The sister casting this vote
+  sister = models.ForeignKey(Sister)
+
+  def __unicode__(self):
+    return unicode("Vote for %s for %s" % (self.candidate, self.office))
