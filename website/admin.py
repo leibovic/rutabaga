@@ -19,4 +19,5 @@ admin.site.register(Event, EventAdmin)
 
 # Elections
 admin.site.register(Office)
+admin.site.register(OfficeInterest)
 admin.site.register(Candidate)
