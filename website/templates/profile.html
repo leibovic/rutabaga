@@ -7,7 +7,11 @@
 <table class="sister-profile-container">
   <tr>
   <td class="sister-photo-container">
+    {% if profile_sister.photo_url %}
     <img class="sister-photo image-shadow" src="http://axo.scripts.mit.edu/{{ profile_sister.photo_url }}"/>
+    {% else %}
+    <img class="sister-photo image-shadow" src="/static/default-avatar.jpg"/>
+    {% endif %}
   </td>
   <td class="sister-details-container">
     <h1 class="sister-name">{{ profile_sister.full_name }}</h1>
@@ -16,14 +20,14 @@
     {% endif %}
     <ul>
       <li><strong>Class Year: </strong>{{ profile_sister.class_year }}</li>
-      <li><strong>Major: </strong>{{ profile_sister.major }}</li>
-      <li><strong>Hometown: </strong>{{ profile_sister.hometown }}</li>
-      <li><strong>Bio: </strong>{{ profile_sister.bio }}</li>
-      <li><strong>Interests: </strong>{{ profile_sister.interests }}</li>
+      <li><strong>Major: </strong>{% if profile_sister.major %}{{ profile_sister.major }}{% endif %}</li>
+      <li><strong>Hometown: </strong>{% if profile_sister.hometown %}{{ profile_sister.hometown }}{% endif %}</li>
+      <li><strong>Bio: </strong>{% if profile_sister.bio %}{{ profile_sister.bio }}{% endif %}</li>
+      <li><strong>Interests: </strong>{% if profile_sister.interests %}{{ profile_sister.interests }}{% endif %}</li>
     {% if user.first_name %}
       <li><strong>Email: </strong><a href="mailto:{{ profile_sister.user.email }}"">{{ profile_sister.user.email }}</a></li>
-      <li><strong>Phone Number: </strong>{{ profile_sister.phone_number|phone  }}</li>
-      <li><strong>Residence: </strong>{{ profile_sister.residence  }}</li>
+      <li><strong>Phone Number: </strong>{% if profile_sister.phone_number %}{{ profile_sister.phone_number|phone  }}{% endif %}</li>
+      <li><strong>Residence: </strong>{% if profile_sister.residence %}{{ profile_sister.residence }}{% endif %}</li>
     {% endif %}
     </ul>  
   </td>

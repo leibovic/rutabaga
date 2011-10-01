@@ -3,10 +3,15 @@
 {% block title %}Edit Profile &ndash; {% endblock %}
 
 {% block main %}
+
 <table class="sister-profile-container">
   <tr>
   <td class="sister-photo-container">
+    {% if sister.photo_url != "" %}
     <img class="sister-photo" src="http://axo.scripts.mit.edu/{{ sister.photo_url }}"/>
+    {% else %}
+    <img class="sister-photo" src="/static/default-avatar.jpg"/>
+    {% endif %}
   </td>
   <td class="sister-details-container">
     <h1 class="sister-name">{{ sister.full_name }}</h1>

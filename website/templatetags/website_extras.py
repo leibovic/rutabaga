@@ -10,8 +10,8 @@ def phone(value):
 
 @register.filter
 def interest(value):
-  if value is 0:
+  if value == 0:
     return "No"
-  if value is 1:
+  if value == 1:
     return "Yes"  
   return "Maybe"

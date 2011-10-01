@@ -386,18 +386,23 @@ img {
   margin: 10px 0;
 }
 
-.sister-photo {
+.sister-photo-container {
   width: 200px;
 }
 
-.sister-details-container {
-  padding-left: 15px;
+.sister-photo {
+  width: 200px;
+  border-radius: 2px;
 }
 
-.sister-name {
+.sister-details-container {
+  padding-left: 25px;
+}
+
+#main h1.sister-name {
   font-size: 1.5em;
   font-family: "American Typewriter";
-  margin-bottom: 5px;
+  margin: 0 0 5px 0;
 }
 
 .sister-details-container > h2 {
