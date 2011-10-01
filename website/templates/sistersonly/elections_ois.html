@@ -8,7 +8,10 @@
   {% if submitted %}
   <p>Thanks for submitting your OIS!</p>
   {% else %}
-  <p>Please indicate your interest level in each position below:</p>
+  {% if error %}
+  <p class="error">Make sure you select a choice for every position!</p>
+  {% endif %}  
+  <p>Please indicate your interest level in each position below. Any new forms you submit will replace your old responses.</p>
   <form method="post" action="">
     {% csrf_token %}
     <table class="ois-table">

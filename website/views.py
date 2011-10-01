@@ -116,6 +116,7 @@ def sistersonly_elections(request):
 def sistersonly_elections_ois(request):
   context = get_context(request)
   offices = Office.objects.filter(is_exec=True)
+  context['offices'] = offices
 
   if request.method == 'POST':
     sister = context['sister']
@@ -125,11 +126,14 @@ def sistersonly_elections_ois(request):
         office_interest = OfficeInterest.objects.get(sister=sister, office=office)
       except:
         office_interest = OfficeInterest(sister=sister, office=office)
-      office_interest.interest = request.POST[str(office.id)]
-      office_interest.save()
+      try:
+        office_interest.interest = request.POST[str(office.id)]
+        office_interest.save()
+      except:
+        context['error'] = True
+        return render_to_response("sistersonly/elections_ois.html", RequestContext(request, context))
+
     context['submitted'] = True
-  else:
-    context['offices'] = offices
 
   return render_to_response("sistersonly/elections_ois.html", RequestContext(request, context))
 
@@ -138,6 +142,8 @@ def sistersonly_elections_ois(request):
 def sistersonly_elections_ois_results(request):
   context = get_context(request)
   context['results'] = OfficeInterest.objects.all()
+  # This should be done in the template with {% if perms.website.office %} but that's not working :(
+  context['can_view'] = request.user.has_perm("website.office")
   return render_to_response('sistersonly/elections_ois_results.html', context)
 
 @secure_required
