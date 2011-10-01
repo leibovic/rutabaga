@@ -6,23 +6,19 @@
 {% block main %}
 <div class="content">
   <h1>OIS Results</h1>
-  {% if perms.website.change_office %}
   <table class="data-table">
     <tr>
-      <th>Sister</th>
       <th>Position</th>
+      <th>Sister</th>
       <th>Interested?</th>
     </tr>
-    {% for result in results %}
+    {% for result in results|dictsort:"sort_rank" %}
     <tr>
-      <td>{{ result.sister }}</td>
       <td>{{ result.office }}</td>
+      <td>{{ result.sister }}</td>
       <td>{{ result.interest|interest }}</td>
     </tr>
     {% endfor %}
   </table>
-  {% else %}
-  <p>I'm sorry, you don't have permission to see this page.</p>
-  {% endif %}
 </div>
 {% endblock %}

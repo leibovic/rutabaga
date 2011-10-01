@@ -7,7 +7,7 @@
 <table class="sister-profile-container">
   <tr>
   <td class="sister-photo-container">
-    {% if sister.photo_url != "" %}
+    {% if sister.photo_url %}
     <img class="sister-photo" src="http://axo.scripts.mit.edu/{{ sister.photo_url }}"/>
     {% else %}
     <img class="sister-photo" src="/static/default-avatar.jpg"/>

@@ -110,13 +110,13 @@ class OfficeInterest(models.Model):
   office = models.ForeignKey(Office)
   interest = models.IntegerField(choices=INTEREST_LEVELS, null=True)
 
+  # Rank used for sorting results by office, then interest, then sister
+  def sort_rank(self):
+    return "%s%s%s" % (self.office, self.interest, self.sister.sort_rank())
+  sort_rank.short_decription = 'Sort Rank'
+
   def __unicode__(self):
     return unicode("%s, %s" % (self.sister, self.office))
-
-class OfficeInterestForm(ModelForm):
-  class Meta:
-    model = OfficeInterest
-    fields = ('interest')
 
 class Candidate(models.Model):
   # Some positions can have more than one sister run as a candidate (i.e. committees)
