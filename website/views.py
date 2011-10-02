@@ -7,6 +7,16 @@ from django.core.mail import send_mail
 from django.template import RequestContext
 from django.conf import settings
 
+def get_context(request):
+  context = {}
+  context['user'] = request.user
+  if request.user.is_authenticated():
+    try:
+      context['sister'] = Sister.objects.get(user=request.user)
+    except:
+      pass
+  return context
+
 ''' Page requests '''
 
 def sisters(request):
@@ -118,6 +128,8 @@ def sistersonly_elections_ois(request):
 def sistersonly_elections_ois_results(request):
   context = get_context(request)
   context['results'] = OfficeInterest.objects.all()
+  # This should be done in the template with {% if perms.website.office %} but that's not working :(
+  context['can_view'] = request.user.has_perm("website.office")
   return render_to_response('sistersonly/elections_ois_results.html', context)
 
 @login_required
