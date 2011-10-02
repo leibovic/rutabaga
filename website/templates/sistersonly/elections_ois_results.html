@@ -6,7 +6,6 @@
 {% block main %}
 <div class="content">
   <h1>OIS Results</h1>
-  {% if can_view %}
   <table class="data-table">
     <tr>
       <th>Position</th>
@@ -21,8 +20,5 @@
     </tr>
     {% endfor %}
   </table>
-  {% else %}
-  <p>I'm sorry, you don't have permission to view this page.</p>
-  {% endif %}
 </div>
 {% endblock %}

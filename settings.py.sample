@@ -77,6 +77,16 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'middleware.ssl_middleware.SecureRequiredMiddleware',
+)
+
+# Uncomment this code for production
+#HTTPS_SUPPORT = True
+#SESSION_COOKIE_SECURE = True
+SECURE_REQUIRED_PATHS = (
+#    '/admin/',
+#    '/accounts/',
+#    '/sistersonly/',
 )
 
 ROOT_URLCONF = 'rutabaga.urls'

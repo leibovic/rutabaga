@@ -7,27 +7,6 @@ from django.core.mail import send_mail
 from django.template import RequestContext
 from django.conf import settings
 
-def secure_required(view_func):
-    """Decorator makes sure URL is accessed over https."""
-    def _wrapped_view_func(request, *args, **kwargs):
-        if not request.is_secure():
-            if getattr(settings, 'HTTPS_SUPPORT', True):
-                request_url = request.build_absolute_uri(request.get_full_path())
-                secure_url = request_url.replace('http://', 'https://')
-                return HttpResponseRedirect(secure_url)
-        return view_func(request, *args, **kwargs)
-    return _wrapped_view_func
-
-def get_context(request):
-  context = {}
-  context['user'] = request.user
-  if request.user.is_authenticated():
-    try:
-      context['sister'] = Sister.objects.get(user=request.user)
-    except:
-      pass
-  return context
-
 ''' Page requests '''
 
 def sisters(request):
@@ -59,7 +38,6 @@ def edit_profile(request):
 
 ''' Sisters only pages '''
 
-@secure_required
 @login_required
 def sistersonly_directory(request):
   context = get_context(request)
@@ -111,7 +89,6 @@ def sistersonly_elections(request):
   context = get_context(request)
   return render_to_response('sistersonly/elections.html', context)
 
-@secure_required
 @login_required
 def sistersonly_elections_ois(request):
   context = get_context(request)
@@ -137,24 +114,18 @@ def sistersonly_elections_ois(request):
 
   return render_to_response("sistersonly/elections_ois.html", RequestContext(request, context))
 
-@secure_required
 @login_required
 def sistersonly_elections_ois_results(request):
   context = get_context(request)
   context['results'] = OfficeInterest.objects.all()
-  # This should be done in the template with {% if perms.website.office %} but that's not working :(
-  context['can_view'] = request.user.has_perm("website.office")
   return render_to_response('sistersonly/elections_ois_results.html', context)
 
-@secure_required
 @login_required
 def sistersonly_elections_loi(request):
   context = get_context(request)
   return render_to_response('sistersonly/elections_loi.html', context)
 
-@secure_required
 @login_required
 def sistersonly_elections_slating(request):
   context = get_context(request)
   return render_to_response('sistersonly/elections_slating.html', context)
-
