@@ -81,8 +81,8 @@ MIDDLEWARE_CLASSES = (
 )
 
 # Uncomment this code for production
+# See http://www.redrobotstudios.com/blog/2010/02/06/requiring-https-for-certain-paths-in-django/
 #HTTPS_SUPPORT = True
-#SESSION_COOKIE_SECURE = True
 SECURE_REQUIRED_PATHS = (
 #    '/admin/',
 #    '/accounts/',
