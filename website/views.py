@@ -129,7 +129,7 @@ def sistersonly_elections_ois_results(request):
   context = get_context(request)
   context['results'] = OfficeInterest.objects.all()
   # This should be done in the template with {% if perms.website.office %} but that's not working :(
-  context['can_view'] = request.user.has_perm("website.office")
+  context['can_view'] = request.user.has_perm("website.office_interest.can_change_office_interest")
   return render_to_response('sistersonly/elections_ois_results.html', context)
 
 @login_required
