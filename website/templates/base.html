@@ -45,8 +45,18 @@
     </header>
       <!-- location attribute is the path stripped of '/' (used to indicate current page)-->
     <ul class="navigation">
-      <li location="about"><a href="/about">About</a></li>
-      <li location="sisters"><a href="/sisters">Sisters</a></li>
+      <li location="about">
+        <a href="/about">About</a>
+        <ul class="dropdown">
+          <li><a href="/about/house">Our House</a></li>
+        </ul>
+      </li>
+      <li location="sisters">
+        <a href="/sisters">Sisters</a>
+        <ul class="dropdown">
+          <li><a href="/sisters/officers">Officers</a></li>
+        </ul>      
+      </li>
       <li location="philanthropy">
         <a href="/philanthropy">Philanthropy</a>
         <ul class="dropdown">
