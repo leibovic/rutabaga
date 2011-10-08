@@ -119,13 +119,18 @@ class OfficeInterest(models.Model):
     return unicode("%s, %s" % (self.sister, self.office))
 
 class Candidate(models.Model):
-  # Some positions can have more than one sister run as a candidate (i.e. committees)
-  sisters = models.ManyToManyField(Sister)
+  # TODO: Some positions can have more than one sister run as a candidate (i.e. committees)
+  sister = models.ForeignKey(Sister)
   office = models.ForeignKey(Office)
   loi = models.TextField()
 
   def __unicode__(self):
-    return unicode("%s running for %s" % (self.sister, self.office))
+    return unicode("%s, %s" % (self.sister, self.office))
+
+class CandidateForm(ModelForm):
+  class Meta:
+    model = Candidate
+    fields = ('office', 'loi')
 
 class Vote(models.Model):
   office = models.ForeignKey(Office)

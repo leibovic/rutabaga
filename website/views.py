@@ -135,7 +135,24 @@ def sistersonly_elections_ois_results(request):
 @login_required
 def sistersonly_elections_loi(request):
   context = get_context(request)
-  return render_to_response('sistersonly/elections_loi.html', context)
+
+  if request.method == 'POST':
+    candidate = Candidate(sister=context['sister'])
+    form = CandidateForm(request.POST, instance=candidate)
+    if form.is_valid():
+      try:
+        # Delete any pre-existing LOIs
+        candidate = Candidate.objects.get(sister=context['sister'], office=form.cleaned_data['office'])
+        candidate.delete()
+      except:
+        pass
+      form.save()
+      context['success'] = True
+  else:
+    form = CandidateForm()
+
+  context['form'] = form
+  return render_to_response('sistersonly/elections_loi.html', RequestContext(request, context))
 
 @login_required
 def sistersonly_elections_slating(request):
