@@ -123,3 +123,6 @@ LOGIN_REDIRECT_URL = '/sistersonly/'
 # Email address that anonymous feedback will be sent to
 FEEDBACK_EMAIL = 'margaret.leibovic@gmail.com'
 
+# Elections settings
+OIS_OPEN = False
+LOI_OPEN = False

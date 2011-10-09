@@ -5,35 +5,39 @@
 {% block main %}
 <div class="content">
   <h1>Exec Election OIS Submission</h1>
-  {% if submitted %}
-  <p>Thanks for submitting your OIS!</p>
+  {% if ois_closed %}
+    <p>Sorry, OIS submission is closed now!</p>  
   {% else %}
-  {% if error %}
-  <p class="error">Make sure you select a choice for every position!</p>
-  {% endif %}  
-  <p>Please indicate your interest level in each position below. Any new forms you submit will replace your old responses.</p>
-  <form method="post" action="">
-    {% csrf_token %}
-    <table class="ois-table">
-    {% for office in offices %}
-      <tr><td>Title:</td><td>{{ office.title }}</td></tr>
-      <tr><td>Description:</td><td>{{ office.description }}</td></tr>
-      <tr class="radio-row"><td>Are you interested?</td>
-          <td>
-            <input type="radio" name="{{ office.id }}" id="{{ office.id }}yes" value="1"/>
-            <label for="{{ office.id }}yes">Yes</label>
-
-            <input type="radio" name="{{ office.id }}" id="{{ office.id }}no" value="0"/>
-            <label for="{{ office.id }}no">No</label>
-
-            <input type="radio" name="{{ office.id }}" id="{{ office.id }}maybe" value="2"/>
-            <label for="{{ office.id }}maybe">Maybe</label>
-          </td>
-      </tr>
-    {% endfor %}
-    </table>
-    <input class="form-submit" type="submit" value="Submit OIS"/>
-  </form>
+    {% if submitted %}
+    <p>Thanks for submitting your OIS!</p>
+    {% else %}
+    {% if error %}
+    <p class="error">Make sure you select a choice for every position!</p>
+    {% endif %}  
+    <p>Please indicate your interest level in each position below. Any new forms you submit will replace your old responses.</p>
+    <form method="post" action="">
+      {% csrf_token %}
+      <table class="ois-table">
+      {% for office in offices %}
+        <tr><td>Title:</td><td>{{ office.title }}</td></tr>
+        <tr><td>Description:</td><td>{{ office.description }}</td></tr>
+        <tr class="radio-row"><td>Are you interested?</td>
+            <td>
+              <input type="radio" name="{{ office.id }}" id="{{ office.id }}yes" value="1"/>
+              <label for="{{ office.id }}yes">Yes</label>
+  
+              <input type="radio" name="{{ office.id }}" id="{{ office.id }}no" value="0"/>
+              <label for="{{ office.id }}no">No</label>
+  
+              <input type="radio" name="{{ office.id }}" id="{{ office.id }}maybe" value="2"/>
+              <label for="{{ office.id }}maybe">Maybe</label>
+            </td>
+        </tr>
+      {% endfor %}
+      </table>
+      <input class="form-submit" type="submit" value="Submit OIS"/>
+    </form>
+    {% endif %}
   {% endif %}
 </div>
 {% endblock %}

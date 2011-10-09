@@ -5,27 +5,27 @@
 {% block main %}
 <div class="content">
   <h1>LOI Submission</h1>
-  {% if user.is_staff %}
-  {% if form.errors %}
-  <h2 class="error">Sorry, there was a problem submitting your LOI. Please make sure you fill out all the form fields.</h2>
-  {% endif %}
-
-  {% if success %}
-  <h2 class="success">Your LOI was submitted sucessfully!</a></h2>
-  {% endif %}
-
-  <form method="post" action="">
-    {% csrf_token %}
-    <table class="form-table">
-      <tr><td>Candidate:</td><td>{{ sister.full_name }}</td></tr>
-      <tr><td>Office:</td><td>{{ form.office }}</td></tr>
-      <tr><td>Letter of Intent:</td><td>{{ form.loi }}</td></tr>
-    </table>
-    <input class="form-submit" type="submit" value="Submit LOI"/>
-    <p style="font-style:italic;">Note: An LOI submitted for a given office will replace any previously submitted LOIs.</p>
-  </form>
+  {% if loi_closed %}
+    <p>Sorry, LOI submission is closed now!</p>  
   {% else %}
-  <p>Coming soon!</p>
+    {% if form.errors %}
+    <h2 class="error">Sorry, there was a problem submitting your LOI. Please make sure you fill out all the form fields.</h2>
+    {% endif %}
+  
+    {% if success %}
+    <h2 class="success">Your LOI was submitted sucessfully!</a></h2>
+    {% endif %}
+  
+    <form method="post" action="">
+      {% csrf_token %}
+      <table class="form-table">
+        <tr><td>Candidate:</td><td>{{ sister.full_name }}</td></tr>
+        <tr><td>Office:</td><td>{{ form.office }}</td></tr>
+        <tr><td>Letter of Intent:</td><td>{{ form.loi }}</td></tr>
+      </table>
+      <input class="form-submit" type="submit" value="Submit LOI"/>
+      <p style="font-style:italic;">Note: An LOI submitted for a given office will replace any previously submitted LOIs.</p>
+    </form>
   {% endif %}
 </div>
 {% endblock %}

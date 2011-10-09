@@ -102,6 +102,11 @@ def sistersonly_elections(request):
 @login_required
 def sistersonly_elections_ois(request):
   context = get_context(request)
+  ois_open = settings.OIS_OPEN
+  if not ois_open:
+    context['ois_closed'] = True
+    return render_to_response("sistersonly/elections_ois.html", RequestContext(request, context))
+
   offices = Office.objects.filter(is_exec=True)
   context['offices'] = offices
 
@@ -135,6 +140,10 @@ def sistersonly_elections_ois_results(request):
 @login_required
 def sistersonly_elections_loi(request):
   context = get_context(request)
+  loi_open = settings.LOI_OPEN
+  if not loi_open:
+    context['loi_closed'] = True
+    return render_to_response('sistersonly/elections_loi.html', RequestContext(request, context))
 
   if request.method == 'POST':
     candidate = Candidate(sister=context['sister'])
