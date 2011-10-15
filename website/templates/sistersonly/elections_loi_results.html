@@ -12,6 +12,7 @@
   <p>For your reference, all the submitted LOIs are available below. <a href="/sistersonly/elections/slating">Slating</a> will happen in chapter on Sunday, October 16.</p>
   {% for candidate in candidate_list %}
     <h2 class="loi-results-office">{{ candidate.grouper }}</h2>
+    <p class="loi-results-office-description">{{ candidate.grouper.description }}</h2>
     <table class="loi-results-table">
     {% for item in candidate.list %}
       <tr>

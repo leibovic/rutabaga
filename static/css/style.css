@@ -485,6 +485,10 @@ img {
   border-bottom: 2px solid #495c23;
 }
 
+.loi-results-office-description {
+  font-style: italic;
+}
+
 .loi-results-photo {
   width: 100px;
   border-radius: 2px;
