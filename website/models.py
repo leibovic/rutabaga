@@ -127,8 +127,8 @@ class Candidate(models.Model):
   loi = models.TextField()
 
   def sort_rank(self):
-    # Sort by reverse chain of command
-    return "%s%s" % (100 - self.office.chain_of_command, self.sister.sort_rank())
+    # Sort by reverse chain of command. Add title in case chain_of_command is accidentally tied.
+    return "%s%s%s" % (100 - self.office.chain_of_command, self.office.title, self.sister.sort_rank())
   sort_rank.short_decription = 'Sort Rank'
 
   def __unicode__(self):
