@@ -14,7 +14,7 @@
     <h2 class="loi-results-office">{{ candidate.grouper }}</h2>
     {% for item in candidate.list %}
     <h3>{{ item.sister }}</h3>
-    <p>{{ item.loi|linebreaks }}</p>
+    <p class="loi-results-loi">{{ item.loi|linebreaksbr }}</p>
     {% endfor %}
   {% endfor %}
 
