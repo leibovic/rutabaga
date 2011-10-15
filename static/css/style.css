@@ -481,11 +481,23 @@ img {
   font-size: 1.3em;
   margin-top: 10px;
   font-family: "American Typewriter";
+  color: #495c23;
+  border-bottom: 2px solid #495c23;
 }
 
-#main p.loi-results-loi {
-  margin-bottom: 10px;
-  border-bottom: 1px solid #ccc;
+.loi-results-photo {
+  width: 100px;
+  border-radius: 2px;
+  margin-top: 5px;
+}
+
+.loi-results-table td {
+  padding: 10px 0;
+  border-bottom: 1px dotted #ccc;
+}
+
+.loi-results-table td.loi-results-sister {
+  width: 120px;
 }
 
 /**
