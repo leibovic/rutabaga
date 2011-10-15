@@ -124,6 +124,10 @@ class Candidate(models.Model):
   office = models.ForeignKey(Office)
   loi = models.TextField()
 
+  def sort_rank(self):
+    return "%s%s" % (self.office, self.sister.sort_rank())
+  sort_rank.short_decription = 'Sort Rank'
+
   def __unicode__(self):
     return unicode("%s, %s" % (self.sister, self.office))
 

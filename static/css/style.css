@@ -477,6 +477,12 @@ img {
   border-bottom: 1px solid #ccc;
 }
 
+#main h2.loi-results-office {
+  font-size: 1.3em;
+  margin-top: 10px;
+  font-family: "American Typewriter";
+}
+
 /**
  * Non-semantic helper classes: please define your styles before this section.
  */

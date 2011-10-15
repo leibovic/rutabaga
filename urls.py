@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     url(r'^sistersonly/elections/ois/$', 'website.views.sistersonly_elections_ois'),
     url(r'^sistersonly/elections/ois/results/$', 'website.views.sistersonly_elections_ois_results'),
     url(r'^sistersonly/elections/loi/$', 'website.views.sistersonly_elections_loi'),
+    url(r'^sistersonly/elections/loi/results/$', 'website.views.sistersonly_elections_loi_results'),
     url(r'^sistersonly/elections/slating/$', 'website.views.sistersonly_elections_slating'),
 
     # Uncomment the admin/doc line below to enable admin documentation:

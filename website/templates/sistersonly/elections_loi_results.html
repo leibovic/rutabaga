@@ -1,0 +1,25 @@
+{% extends "sistersonly/base.html" %}
+{% load website_extras %}
+
+{% block title %}Submitted LOIs &ndash; {% endblock %}
+
+{% block main %}
+
+{% regroup candidates|dictsort:"sort_rank" by office as candidate_list %}
+
+<div class="content">
+  {% if loi_results_open %}
+  <p>For your reference, all the submitted LOIs are available below. <a href="/sistersonly/elections/slating">Slating</a> will happen in chapter on Sunday, October 16.</p>
+  {% for candidate in candidate_list %}
+    <h2 class="loi-results-office">{{ candidate.grouper }}</h2>
+    {% for item in candidate.list %}
+    <h3>{{ item.sister }}</h3>
+    <p>{{ item.loi }}</p>
+    {% endfor %}
+  {% endfor %}
+
+  {% else %}
+  <p>Sorry, you can't see submitted LOIs right now.</p>
+  {% endif %}
+</div>
+{% endblock %}

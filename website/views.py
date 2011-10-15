@@ -102,7 +102,10 @@ def sistersonly_elections(request):
 @login_required
 def sistersonly_elections_ois(request):
   context = get_context(request)
-  ois_open = settings.OIS_OPEN
+  try:
+    ois_open = settings.OIS_OPEN
+  except:
+    pass
   if not ois_open:
     context['ois_closed'] = True
     return render_to_response("sistersonly/elections_ois.html", RequestContext(request, context))
@@ -140,7 +143,10 @@ def sistersonly_elections_ois_results(request):
 @login_required
 def sistersonly_elections_loi(request):
   context = get_context(request)
-  loi_open = settings.LOI_OPEN
+  try:
+    loi_open = settings.LOI_OPEN
+  except:
+    pass
   if not loi_open:
     context['loi_closed'] = True
     return render_to_response('sistersonly/elections_loi.html', RequestContext(request, context))
@@ -164,6 +170,32 @@ def sistersonly_elections_loi(request):
   return render_to_response('sistersonly/elections_loi.html', RequestContext(request, context))
 
 @login_required
+def sistersonly_elections_loi_results(request):
+  context = get_context(request)
+  context['candidates'] = Candidate.objects.all()
+  try:
+    context['loi_results_open'] = settings.LOI_RESULTS_OPEN
+  except:
+    pass
+  return render_to_response('sistersonly/elections_loi_results.html', context)
+
+@login_required
 def sistersonly_elections_slating(request):
   context = get_context(request)
-  return render_to_response('sistersonly/elections_slating.html', context)
+  try:
+    slating_open = settings.SLATING_OPEN
+  except:
+    pass
+  if not slating_open:
+    context['slating_closed'] = True
+    return render_to_response('sistersonly/elections_slating.html', RequestContext(request, context))
+
+  candidates = Candidate.objects.all()
+  if request.method == 'POST':
+    # TODO: submit voting form
+    context['success'] = True
+  else:
+    # TODO: make voting form
+    pass
+
+  return render_to_response('sistersonly/elections_slating.html', RequestContext(request, context))
