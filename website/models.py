@@ -96,6 +96,8 @@ class Office(models.Model):
 
   current_officer = models.ForeignKey(Sister, blank=True, null=True)
 
+  chain_of_command = models.IntegerField(default=0, blank=True, null=True)
+
   def __unicode__(self):
     return unicode(self.title)
 
@@ -125,7 +127,8 @@ class Candidate(models.Model):
   loi = models.TextField()
 
   def sort_rank(self):
-    return "%s%s" % (self.office, self.sister.sort_rank())
+    # Sort by reverse chain of command
+    return "%s%s" % (100 - self.office.chain_of_command, self.sister.sort_rank())
   sort_rank.short_decription = 'Sort Rank'
 
   def __unicode__(self):
