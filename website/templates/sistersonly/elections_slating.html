@@ -3,16 +3,63 @@
 {% block title %}Slating &ndash; {% endblock %}
 
 {% block main %}
+
 <div class="content">
   <h1>Slating</h1>
   {% if loi_closed %}
     <p>Sorry, slating is closed now!</p>  
   {% else %}
-  <form method="post" action="">
-    {% csrf_token %}
-    <p>Slating coming soon!</p>
-    <!--input class="form-submit" type="submit" value="Submit slate choices"/-->
-  </form>
+    {% if success %}
+    <p>{{ debug }}</p>
+    <p>Thanks for slating! Your choices were submitted successfully.</p>
+    {% else %}
+      {% if already_voted %}
+        <p>It looks like you already voted, so there's nothing else you need to do here!</p>
+      {% else %}
+
+      {% regroup candidates|dictsort:"sort_rank" by office as office_list %}
+      <p>Choose your two favorite candidates for each office below. You can't change your choices once this page is submitted, so choose wisely!</p>
+      <form method="post" action="">
+        {% csrf_token %}
+    
+        {% for office in office_list %}
+          <h2 class="loi-results-office">{{ office.grouper }}</h2>
+          <p class="loi-results-office-description">{{ office.grouper.description }}</h2>
+          <table class="loi-results-table">
+          {% for candidate in office.list %}
+            <tr>
+              <td class="loi-results-sister">
+                <a href="/sisters/{{ candidate.sister.id }}">{{ candidate.sister }}</a>
+                <img class="loi-results-photo" src="http://axo.scripts.mit.edu/{{ candidate.sister.photo_url }}"/>
+              </td>
+              <td>{{ candidate.loi|linebreaksbr }}</td>        
+            </tr>
+          {% endfor %}
+          </table>
+          
+          <div class="slating-select-container">
+            <p>Select your two favorite candidates for <strong>{{ office.grouper }}</strong>.</p>
+            <select name="{{ office.grouper.id }}-1">
+              <option value="">Abstain</option>
+            {% for candidate in office.list %}
+              <option value="{{ candidate.id }}">{{ candidate.sister }}</option>
+            {% endfor %}
+            </select>
+            <select name="{{ office.grouper.id }}-2">
+              <option value="">Abstain</option>
+            {% for candidate in office.list %}
+              <option value="{{ candidate.id }}">{{ candidate.sister }}</option>
+            {% endfor %}
+            </select>
+            <p style="font-style:italic;text-align:right;">A second vote for the same candidate will not be counted.</p>
+          </div>
+    
+        {% endfor %}
+        
+        <input id="slate-submit-button" type="submit" value="Submit slate choices"/>
+      </form>
+      {% endif %}
+    {% endif %}
   {% endif %}
 </div>
 {% endblock %}

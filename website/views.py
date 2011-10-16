@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.template import RequestContext
 from django.conf import settings
+from django.db.models import Count
 
 def get_context(request):
   context = {}
@@ -182,7 +183,7 @@ def sistersonly_elections_loi_results(request):
 @login_required
 def sistersonly_elections_slating(request):
   context = get_context(request)
-  try:
+  try: # Check to make sure slating is open
     slating_open = settings.SLATING_OPEN
   except:
     pass
@@ -190,12 +191,53 @@ def sistersonly_elections_slating(request):
     context['slating_closed'] = True
     return render_to_response('sistersonly/elections_slating.html', RequestContext(request, context))
 
-  candidates = Candidate.objects.all()
+  # Check to make sure the user hasn't already voted
+  voting_sister = context['sister']
+  existing_votes = Vote.objects.filter(sister=voting_sister)
+  if len(existing_votes) > 0:
+    context['already_voted'] = True
+    return render_to_response('sistersonly/elections_slating.html', RequestContext(request, context))
+
   if request.method == 'POST':
-    # TODO: submit voting form
+    offices = Office.objects.filter(is_exec=True)
+    for office in offices:
+      try: # Get the first candidate choice
+        candidate1 = Candidate.objects.get(id=request.POST[str(office.id)+"-1"])
+        vote1 = Vote(office=office, candidate=candidate1, sister=voting_sister)
+        vote1.save()
+      except:
+        pass
+
+      try: # Get the second candidate choice
+        candidate2 = Candidate.objects.get(id=request.POST[str(office.id)+"-2"])
+        if candidate1.id is not candidate2.id:
+          vote2 = Vote(office=office, candidate=candidate2, sister=voting_sister)
+          vote2.save()
+      except:
+        pass
+
     context['success'] = True
   else:
-    # TODO: make voting form
-    pass
+    context['candidates'] = Candidate.objects.all()
 
   return render_to_response('sistersonly/elections_slating.html', RequestContext(request, context))
+
+@login_required
+def sistersonly_elections_slating_results(request):
+  context = get_context(request)
+  # TODO: This should be done in the template, and with a more specific permission group
+  context['can_view'] = request.user.is_staff
+
+  results = []
+  offices = Office.objects.filter(is_exec=True).order_by('chain_of_command').order_by('title').reverse()
+  for office in offices:
+    # Count the number of votes for each candidate
+    # Example: votes = [{'candidate__count': 2, 'candidate': 1}, ... ]
+    votes = Vote.objects.filter(office=office).values('candidate').order_by().annotate(Count('candidate'))
+    for vote in votes:
+      vote['candidate'] = Candidate.objects.get(id=vote['candidate']).sister
+    results.append({ 'office': office, 'votes': votes })
+
+  context['results'] = results
+  
+  return render_to_response('sistersonly/elections_slating_results.html', context)

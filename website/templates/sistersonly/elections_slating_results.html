@@ -1,0 +1,28 @@
+{% extends "sistersonly/base.html" %}
+{% load website_extras %}
+
+{% block title %}Slating Results &ndash; {% endblock %}
+
+{% block main %}
+<div class="content">
+  <h1>Slating Results</h1>
+  {% if can_view %}
+
+  {% for result in results %}
+    <h2 class="loi-results-office">{{ result.office }}</h2>
+    <table class="slating-results-table">
+    {% for vote in result.votes %}
+      <tr>
+        <td>{{ vote.candidate__count }}</td>        
+        <td>{{ vote.candidate }}</td>
+      </tr>
+    {% endfor %}
+    </table>
+  {% endfor %}
+
+  </table>
+  {% else %}
+  <p>Sorry, you don't have permission to view this page.</p>
+  {% endif %}
+</div>
+{% endblock %}

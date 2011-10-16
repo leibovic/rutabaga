@@ -30,6 +30,7 @@ urlpatterns = patterns('',
     url(r'^sistersonly/elections/loi/$', 'website.views.sistersonly_elections_loi'),
     url(r'^sistersonly/elections/loi/results/$', 'website.views.sistersonly_elections_loi_results'),
     url(r'^sistersonly/elections/slating/$', 'website.views.sistersonly_elections_slating'),
+    url(r'^sistersonly/elections/slating/results/$', 'website.views.sistersonly_elections_slating_results'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
