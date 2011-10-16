@@ -210,7 +210,7 @@ def sistersonly_elections_slating(request):
 
       try: # Get the second candidate choice
         candidate2 = Candidate.objects.get(id=request.POST[str(office.id)+"-2"])
-        if candidate1.id is not candidate2.id:
+        if candidate1.sister.id is not candidate2.sister.id:
           vote2 = Vote(office=office, candidate=candidate2, sister=voting_sister)
           vote2.save()
       except:
