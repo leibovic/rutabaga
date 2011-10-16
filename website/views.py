@@ -202,15 +202,17 @@ def sistersonly_elections_slating(request):
     offices = Office.objects.filter(is_exec=True)
     for office in offices:
       try: # Get the first candidate choice
-        candidate1 = Candidate.objects.get(id=request.POST[str(office.id)+"-1"])
+        id1 = request.POST[str(office.id)+"-1"];
+        candidate1 = Candidate.objects.get(id=id1)
         vote1 = Vote(office=office, candidate=candidate1, sister=voting_sister)
         vote1.save()
       except:
         pass
 
       try: # Get the second candidate choice
-        candidate2 = Candidate.objects.get(id=request.POST[str(office.id)+"-2"])
-        if candidate1.sister.id is not candidate2.sister.id:
+        id2 = request.POST[str(office.id)+"-2"]
+        if id1 != id2:
+          candidate2 = Candidate.objects.get(id=id2)
           vote2 = Vote(office=office, candidate=candidate2, sister=voting_sister)
           vote2.save()
       except:
