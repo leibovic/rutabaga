@@ -231,7 +231,7 @@ def sistersonly_elections_slating_results(request):
   context['can_view'] = request.user.is_staff
 
   results = []
-  offices = Office.objects.filter(is_exec=True).order_by('chain_of_command').order_by('title').reverse()
+  offices = Office.objects.filter(is_exec=True).order_by('title').order_by('chain_of_command').reverse()
   for office in offices:
     # Count the number of votes for each candidate
     # Example: votes = [{'candidate__count': 2, 'candidate': 1}, ... ]
