@@ -20,7 +20,17 @@
     </table>
   {% endfor %}
 
-  </table>
+  <h1>Sisters Who Slated</h1>
+  {% regroup slating_sisters|dictsort:"class_year" by class_year as class_year_list %}
+  {% for class_year in class_year_list %}
+    <h2>{{ class_year.grouper }}</h2>
+    <ul>
+    {% for sister in class_year.list|dictsort:"sort_rank" %}
+      <li>{{ sister.full_name }}</li>
+    {% endfor %}
+    </ul>
+  {% endfor %}
+
   {% else %}
   <p>Sorry, you don't have permission to view this page.</p>
   {% endif %}

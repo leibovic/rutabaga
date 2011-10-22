@@ -239,7 +239,12 @@ def sistersonly_elections_slating_results(request):
     for vote in votes:
       vote['candidate'] = Candidate.objects.get(id=vote['candidate']).sister
     results.append({ 'office': office, 'votes': votes })
-
   context['results'] = results
+
+  slating_sisters = []
+  voter_aggregate = Vote.objects.values('sister').order_by().annotate()
+  for item in voter_aggregate:
+    slating_sisters.append(Sister.objects.get(id=item['sister']))
+  context['slating_sisters'] = slating_sisters
   
   return render_to_response('sistersonly/elections_slating_results.html', context)
