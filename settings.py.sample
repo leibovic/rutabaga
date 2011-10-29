@@ -124,6 +124,7 @@ LOGIN_REDIRECT_URL = '/sistersonly/'
 FEEDBACK_EMAIL = 'margaret.leibovic@gmail.com'
 
 # Elections settings
+EXEC_ELECTION = False
 OIS_OPEN = False
 LOI_OPEN = False
 LOI_RESULTS_OPEN = False # This will let sisters see LOIs

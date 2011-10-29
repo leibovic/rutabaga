@@ -111,7 +111,7 @@ def sistersonly_elections_ois(request):
     context['ois_closed'] = True
     return render_to_response("sistersonly/elections_ois.html", RequestContext(request, context))
 
-  offices = Office.objects.filter(is_exec=True)
+  offices = Office.objects.filter(is_exec=settings.EXEC_ELECTION)
   context['offices'] = offices
 
   if request.method == 'POST':
@@ -136,9 +136,7 @@ def sistersonly_elections_ois(request):
 @login_required
 def sistersonly_elections_ois_results(request):
   context = get_context(request)
-  context['results'] = OfficeInterest.objects.all()
-  # This should be done in the template with {% if perms.website.office %} but that's not working :(
-  context['can_view'] = request.user.has_perm("website.office_interest.can_change_office_interest")
+  context['results'] = OfficeInterest.objects.filter(office__is_exec=settings.EXEC_ELECTION)
   return render_to_response('sistersonly/elections_ois_results.html', context)
 
 @login_required
