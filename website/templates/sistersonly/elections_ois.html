@@ -4,17 +4,26 @@
 
 {% block main %}
 <div class="content">
-  <h1>OIS Submission</h1>
+  <h1>Non-Exec OIS Submission</h1>
   {% if ois_closed %}
     <p>Sorry, OIS submission is closed now!</p>  
   {% else %}
+
     {% if submitted %}
     <p>Thanks for submitting your OIS!</p>
     {% else %}
+
     {% if error %}
     <p class="error">Make sure you select a choice for every position!</p>
-    {% endif %}  
-    <p>Please indicate your interest level in each position below. Any new forms you submit will replace your old responses.</p>
+    {% endif %} 
+
+    <p>Sister may hold a limited number of non-executive positions. Positions fall into two groups, A and B. Sisters may only hold one group A position in the period that requires the most work, as listed below. Not during the time of most work, sisters may hold that group A position as well as one other group B position. Sisters can also hold two group B positions.</p>
+    <p>Group A:</p>
+    <p>Spring: CRSB Class Representative, CPW Chair(s), MomComm Chairs, Lipsync Committee, Panhel Executive Board, Social Chair, and Carnation Ball Committee.</p>
+    <p>Group B:</p>
+    <p>Attendance Chair, Community Service Chair, Family Weekend Committee, Sports Chair, Song Leader, Risk Class Representatives, Historian, Chi Connections, KROM, Retreat Chairs, Assistant Finance, Webmaster, Personal Development Chairs, PACE Chair, Recognitions Chair and Steward.</p>
+
+    <h2>Please indicate your interest level in each position below. Any new forms you submit will replace your old responses.</h2>
     <form method="post" action="">
       {% csrf_token %}
       <table class="ois-table">
@@ -37,6 +46,7 @@
       </table>
       <input class="form-submit" type="submit" value="Submit OIS"/>
     </form>
+
     {% endif %}
   {% endif %}
 </div>
