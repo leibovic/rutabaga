@@ -97,6 +97,7 @@ class Office(models.Model):
   current_officer = models.ForeignKey(Sister, blank=True, null=True)
 
   chain_of_command = models.IntegerField(default=0, blank=True, null=True)
+  reports_to = models.ForeignKey('Office', blank=True, null=True)
 
   def __unicode__(self):
     return unicode(self.title)
