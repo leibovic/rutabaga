@@ -172,7 +172,7 @@ def sistersonly_elections_loi(request):
 @login_required
 def sistersonly_elections_loi_results(request):
   context = get_context(request)
-  context['candidates'] = Candidate.objects.all()
+  context['candidates'] = Candidate.objects.filter(office__is_exec=settings.EXEC_ELECTION)
   try:
     context['loi_results_open'] = settings.LOI_RESULTS_OPEN
   except:
@@ -186,6 +186,7 @@ def sistersonly_elections_slating(request):
     slating_open = settings.SLATING_OPEN
   except:
     pass
+
   if not slating_open:
     context['slating_closed'] = True
     return render_to_response('sistersonly/elections_slating.html', RequestContext(request, context))
@@ -198,7 +199,7 @@ def sistersonly_elections_slating(request):
     return render_to_response('sistersonly/elections_slating.html', RequestContext(request, context))
 
   if request.method == 'POST':
-    offices = Office.objects.filter(is_exec=True)
+    offices = Office.objects.filter(is_exec=settings.EXEC_ELECTION)
     for office in offices:
       try: # Get the first candidate choice
         id1 = request.POST[str(office.id)+"-1"];
@@ -219,7 +220,7 @@ def sistersonly_elections_slating(request):
 
     context['success'] = True
   else:
-    context['candidates'] = Candidate.objects.all()
+    context['candidates'] = Candidate.objects.filter(office__is_exec=settings.EXEC_ELECTION)
 
   return render_to_response('sistersonly/elections_slating.html', RequestContext(request, context))
 
@@ -230,13 +231,13 @@ def sistersonly_elections_slating_results(request):
   context['can_view'] = request.user.is_staff
 
   results = []
-  offices = Office.objects.filter(is_exec=True).order_by('title').order_by('chain_of_command').reverse()
+  offices = Office.objects.filter(is_exec=settings.EXEC_ELECTION).order_by('title')
   for office in offices:
     # Count the number of votes for each candidate
     # Example: votes = [{'candidate__count': 2, 'candidate': 1}, ... ]
     votes = Vote.objects.filter(office=office).values('candidate').order_by().annotate(Count('candidate'))
     for vote in votes:
-      vote['candidate'] = Candidate.objects.get(id=vote['candidate']).sister
+      vote['candidate'] = Candidate.objects.get(id=vote['candidate'])
     results.append({ 'office': office, 'votes': votes })
   context['results'] = results
 

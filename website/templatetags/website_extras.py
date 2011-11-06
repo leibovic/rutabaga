@@ -15,3 +15,7 @@ def interest(value):
   if value == 1:
     return "Yes"  
   return "Maybe"
+
+@register.filter
+def pretty_join(list):
+  return ", ".join(map(str, list))

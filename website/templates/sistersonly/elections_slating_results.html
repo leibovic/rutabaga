@@ -14,7 +14,7 @@
     {% for vote in result.votes %}
       <tr>
         <td>{{ vote.candidate__count }}</td>        
-        <td>{{ vote.candidate }}</td>
+        <td>{{ vote.candidate.sisters.all|pretty_join }}</td>
       </tr>
     {% endfor %}
     </table>
