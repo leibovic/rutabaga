@@ -427,6 +427,15 @@ img {
   color: #bc4956;
 }
 
+.form-help {
+  margin: 3px 0;
+  color: #999;
+}
+
+#id_sisters {
+  height: 300px;
+}
+
 input[type="submit"] {
   margin-top: 10px;
   padding: 5px 10px;

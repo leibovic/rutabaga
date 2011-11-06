@@ -19,7 +19,7 @@
     <form method="post" action="">
       {% csrf_token %}
       <table class="form-table">
-        <tr><td>Candidate:</td><td>{{ sister.full_name }}</td></tr>
+        <tr><td>Candidate(s):</td><td>{{ form.sisters }} <div class="form-help">Hold down "Control", or "Command" on a Mac, to select more than one.</div></td></tr>
         <tr><td>Office:</td><td>{{ form.office }}</td></tr>
         <tr><td>Letter of Intent:</td><td>{{ form.loi }}</td></tr>
       </table>

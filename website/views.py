@@ -151,12 +151,11 @@ def sistersonly_elections_loi(request):
     return render_to_response('sistersonly/elections_loi.html', RequestContext(request, context))
 
   if request.method == 'POST':
-    candidate = Candidate(sister=context['sister'])
-    form = CandidateForm(request.POST, instance=candidate)
+    form = CandidateForm(request.POST)
     if form.is_valid():
       try:
         # Delete any pre-existing LOIs
-        candidate = Candidate.objects.get(sister=context['sister'], office=form.cleaned_data['office'])
+        candidate = Candidate.objects.get(sisters=form.cleaned_data['sisters'], office=form.cleaned_data['office'])
         candidate.delete()
       except:
         pass
@@ -165,6 +164,7 @@ def sistersonly_elections_loi(request):
   else:
     form = CandidateForm()
 
+  form.fields['sisters'].queryset = Sister.objects.exclude(status=1).order_by('user__last_name')
   context['form'] = form
   return render_to_response('sistersonly/elections_loi.html', RequestContext(request, context))
 

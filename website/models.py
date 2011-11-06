@@ -129,23 +129,24 @@ class OfficeInterest(models.Model):
     return unicode("%s, %s" % (self.sister, self.office))
 
 class Candidate(models.Model):
-  # TODO: Some positions can have more than one sister run as a candidate (i.e. committees)
-  sister = models.ForeignKey(Sister)
+  # committee candidates can have more than one sister
+  sisters = models.ManyToManyField(Sister)
+
   office = models.ForeignKey(Office)
   loi = models.TextField()
 
   def sort_rank(self):
     # Sort by reverse chain of command. Add title in case chain_of_command is accidentally tied.
-    return "%s%s%s" % (100 - self.office.chain_of_command, self.office.title, self.sister.sort_rank())
+    return "%s%s%s" % (100 - self.office.chain_of_command, self.office.title)
   sort_rank.short_decription = 'Sort Rank'
 
   def __unicode__(self):
-    return unicode("%s, %s" % (self.sister, self.office))
+    return unicode("%s, %s" % (self.sisters.all(), self.office))
 
 class CandidateForm(ModelForm):
   class Meta:
     model = Candidate
-    fields = ('office', 'loi')
+    fields = ('sisters', 'office', 'loi')
 
 class Vote(models.Model):
   office = models.ForeignKey(Office)
