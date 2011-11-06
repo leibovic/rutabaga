@@ -164,7 +164,7 @@ def sistersonly_elections_loi(request):
   else:
     form = CandidateForm()
 
-  form.fields['office'].queryset = Office.objects.filter(is_exec=settings.EXEC_ELECTION)
+  form.fields['office'].queryset = Office.objects.filter(is_exec=settings.EXEC_ELECTION).order_by('title')
   form.fields['sisters'].queryset = Sister.objects.exclude(status=1).order_by('user__last_name')
   context['form'] = form
   return render_to_response('sistersonly/elections_loi.html', RequestContext(request, context))
