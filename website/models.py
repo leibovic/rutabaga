@@ -97,10 +97,17 @@ class Office(models.Model):
   current_officer = models.ForeignKey(Sister, blank=True, null=True)
 
   chain_of_command = models.IntegerField(default=0, blank=True, null=True)
-  reports_to = models.ForeignKey('Office', blank=True, null=True)
+  reports_to = models.ForeignKey('Office', default='EmptyOffice')
+
+  def sort_rank(self):
+    # Sort by reverse chain of command. Add title in case chain_of_command is accidentally tied.
+    return "%s%s" % (100 - self.reports_to.chain_of_command, self.title)
+  sort_rank.short_decription = 'Sort Rank'
 
   def __unicode__(self):
     return unicode(self.title)
+
+EmptyOffice = Office(title="")
 
 INTEREST_LEVELS = (
   (0, 'No'),
