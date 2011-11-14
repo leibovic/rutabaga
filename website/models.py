@@ -137,7 +137,7 @@ class Candidate(models.Model):
 
   def sort_rank(self):
     # Sort by reverse chain of command. Add title in case chain_of_command is accidentally tied.
-    return "%s%s%s" % (100 - self.office.chain_of_command, self.office.title)
+    return "%s%s" % (100 - self.office.chain_of_command, self.office.title)
   sort_rank.short_decription = 'Sort Rank'
 
   def __unicode__(self):
