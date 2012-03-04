@@ -39,6 +39,9 @@ class Sister(models.Model):
   big = models.ForeignKey('Sister', null=True, blank=True, related_name='sister_big')
   little = models.ForeignKey('Sister', null=True, blank=True, related_name='sister_little')
 
+  memory = models.TextField(blank=True)
+  why_axo = models.TextField(blank=True)
+  what_axo_means = models.TextField(blank=True)
   
 
   def full_name(self):
@@ -56,7 +59,7 @@ class Sister(models.Model):
 class SisterForm(ModelForm):
   class Meta:
     model = Sister
-    fields = ('phone_number', 'residence', 'major', 'hometown', 'bio', 'interests', 'big', 'little')
+    fields = ('phone_number', 'residence', 'major', 'hometown', 'bio', 'interests', 'big', 'little', 'memory', 'why_axo', 'what_axo_means')
 
 class Event(models.Model):
   name = models.CharField(max_length=100)
