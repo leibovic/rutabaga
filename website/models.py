@@ -36,6 +36,11 @@ class Sister(models.Model):
   bio = models.TextField(blank=True)
   interests = models.TextField(blank=True)
 
+  big = models.ForeignKey('Sister', null=True, blank=True, related_name='sister_big')
+  little = models.ForeignKey('Sister', null=True, blank=True, related_name='sister_little')
+
+  
+
   def full_name(self):
     return "%s %s" % (self.user.first_name, self.user.last_name)
   full_name.short_description = 'Name'

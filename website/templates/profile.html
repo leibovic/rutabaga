@@ -28,6 +28,9 @@
       <li><strong>Email: </strong><a href="mailto:{{ profile_sister.user.email }}"">{{ profile_sister.user.email }}</a></li>
       <li><strong>Phone Number: </strong>{% if profile_sister.phone_number %}{{ profile_sister.phone_number|phone  }}{% endif %}</li>
       <li><strong>Residence: </strong>{% if profile_sister.residence %}{{ profile_sister.residence }}{% endif %}</li>
+
+      <li><strong>Big: </strong>{% if profile_sister.big %}{{ profile_sister.big }}{% endif %}</li>
+      <li><strong>Little: </strong>{% if profile_sister.little %}{{ profile_sister.little }}{% endif %}</li>
     {% endif %}
     </ul>  
   </td>
