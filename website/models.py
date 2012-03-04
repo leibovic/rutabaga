@@ -56,7 +56,7 @@ class Sister(models.Model):
 class SisterForm(ModelForm):
   class Meta:
     model = Sister
-    fields = ('phone_number', 'residence', 'major', 'hometown', 'bio', 'interests')
+    fields = ('phone_number', 'residence', 'major', 'hometown', 'bio', 'interests', 'big', 'little')
 
 class Event(models.Model):
   name = models.CharField(max_length=100)
