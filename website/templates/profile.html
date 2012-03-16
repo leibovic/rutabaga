@@ -32,9 +32,9 @@
       <li><strong>Big: </strong>{% if profile_sister.big %}{{ profile_sister.big }}{% endif %}</li>
       <li><strong>Little: </strong>{% if profile_sister.little %}{{ profile_sister.little }}{% endif %}</li>
       <li></li>
-      <li><strong>Favorite AXO Memory: </strong>{% if profile_sister.memory %}{{ profile_sister.memory }}{% endif %}</li>
-      <li><strong>Why I Love AXO: </strong>{% if profile_sister.why_axo %}{{ profile_sister.why_axo }}{% endif %}</li>
-      <li><strong>What AXO Means to Me: </strong>{% if profile_sister.what_axo_means %}{{ profile_sister.what_axo_means }}{% endif %}</li>
+      <li><strong>Favorite AXO Memory: </strong>{% if profile_sister.memory and profile_sister.memory != "" %}{{ profile_sister.memory }}{% endif %}</li>
+      <li><strong>Why I Love AXO: </strong>{% if profile_sister.why_axo and profile_sister.why_axo != ""%}{{ profile_sister.why_axo }}{% endif %}</li>
+      <li><strong>What AXO Means to Me: </strong>{% if profile_sister.what_axo_means and profile_sister.what_axo_means != "" %}{{ profile_sister.what_axo_means }}{% endif %}</li>
 
     
     </ul>  
