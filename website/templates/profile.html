@@ -30,8 +30,8 @@
       <li><strong>Phone Number: </strong>{% if profile_sister.phone_number %}{{ profile_sister.phone_number|phone  }}{% endif %}</li>
       <li><strong>Residence: </strong>{% if profile_sister.residence %}{{ profile_sister.residence }}{% endif %}</li>
     {% endif %}
-      <li><strong>Big: </strong>{% if profile_sister.big %}{{ profile_sister.big }}{% endif %}</li>
-      <li><strong>Little: </strong>{% if profile_sister.little %}{{ profile_sister.little }}{% endif %}</li>
+      <li><strong>Big: </strong>{% if profile_sister.big %}<a href="/sisters/{{ profile_sister.big.id }}">{{ profile_sister.big }}</a>{% endif %}</li>
+      <li><strong>Little: </strong>{% if profile_sister.little %}  <a href="/sisters/{{ profile_sister.little.id }}">{{ profile_sister.little }}</a> {% endif %}</li>
     {% if user.first_name %}
       <li><strong>Little(s): </strong>{% if profile_sister.littles %}{{ profile_sister.littles }}{% endif %}</li>
     {% endif %}
