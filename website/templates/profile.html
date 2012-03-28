@@ -23,8 +23,8 @@
       <li><strong>Major: </strong>{% if profile_sister.major %}{{ profile_sister.major }}{% endif %}</li>
 
       
-      <li><strong>Major(s):<tab id=m1> </strong>{% if profile_sister.majors %}
-      {% for major in profile_sister.majors.all %} <tab to=m1>{{ major }}</br> {% endfor %} {% endif %}</li>
+      <li><strong>Major(s):</strong>{% if profile_sister.majors %}
+      {% for major in profile_sister.majors.all %} {{ major }} {% endfor %} {% endif %}</li>
 
       
       <li><strong>Hometown: </strong>{% if profile_sister.hometown %}{{ profile_sister.hometown }}{% endif %}</li>
@@ -38,8 +38,8 @@
       <li><strong>Big: </strong>{% if profile_sister.big %}<a href="/sisters/{{ profile_sister.big.id }}">{{ profile_sister.big }}</a>{% endif %}</li>
       <li><strong>Little: </strong>{% if profile_sister.little %}  <a href="/sisters/{{ profile_sister.little.id }}">{{ profile_sister.little }}</a> {% endif %}</li>
     {% if user.first_name %}
-      <li><strong>Littles(s):<tab id=l1> </strong>{% if profile_sister.littles %}
-      {% for little in profile_sister.littles.all %} <tab to=l1><a href="/sisters/{{ little.id }}">{{ little }}</br> {% endfor %} {% endif %}</li>
+      <li><strong>Little(s):</strong>{% if profile_sister.littles %}
+      {% for little in profile_sister.littles.all %}<a href="/sisters/{{ little.id }}">{{ little }} {% endfor %} {% endif %}</li>
     {% endif %}
       <li></li>
       <li>{% if profile_sister.memory %}<strong>Favorite AXO Memory: </strong>{{ profile_sister.memory }}{% endif %}</li>
