@@ -30,6 +30,7 @@ class Sister(models.Model):
 
   residence = models.ForeignKey(Residence, null=True, blank=True)
   major = models.ForeignKey(Major, null=True, blank=True)
+  majors = models.ManyToManyField(Major, null=True, blank=True, related_name='sister_majors')
   phone_number = models.CharField(max_length=10, blank=True)
 
   hometown = models.CharField(max_length=100, blank=True)
@@ -38,6 +39,7 @@ class Sister(models.Model):
 
   big = models.ForeignKey('Sister', null=True, blank=True, related_name='sister_big')
   little = models.ForeignKey('Sister', null=True, blank=True, related_name='sister_little')
+  littles = models.ManyToManyField('Sister', null=True, blank=True)
 
   memory = models.TextField(blank=True)
   why_axo = models.TextField(blank=True)
@@ -59,7 +61,7 @@ class Sister(models.Model):
 class SisterForm(ModelForm):
   class Meta:
     model = Sister
-    fields = ('phone_number', 'residence', 'major', 'hometown', 'bio', 'interests', 'big', 'little', 'memory', 'why_axo', 'what_axo_means')
+    fields = ('phone_number', 'residence', 'major', 'majors', 'hometown', 'bio', 'interests', 'big', 'little', 'littles', 'memory', 'why_axo', 'what_axo_means')
 
 class Event(models.Model):
   name = models.CharField(max_length=100)
