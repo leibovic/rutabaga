@@ -21,6 +21,7 @@
     <ul>
       <li><strong>Class Year: </strong>{{ profile_sister.class_year }}</li>
       <li><strong>Major: </strong>{% if profile_sister.major %}{{ profile_sister.major }}{% endif %}</li>
+      <li><strong>Major(s): </strong>{% if profile_sister.majors %}{{ profile_sister.majors }}{% endif %}</li>
       <li><strong>Hometown: </strong>{% if profile_sister.hometown %}{{ profile_sister.hometown }}{% endif %}</li>
       <li><strong>Bio: </strong>{% if profile_sister.bio %}{{ profile_sister.bio }}{% endif %}</li>
       <li><strong>Interests: </strong>{% if profile_sister.interests %}{{ profile_sister.interests }}{% endif %}</li>
@@ -32,7 +33,7 @@
       <li><strong>Big: </strong>{% if profile_sister.big %}{{ profile_sister.big }}{% endif %}</li>
       <li><strong>Little: </strong>{% if profile_sister.little %}{{ profile_sister.little }}{% endif %}</li>
     {% if user.first_name %}
-      <li><strong>Little(s): </strong>{% if profile_sister.little %}{{ profile_sister.little }}{% endif %}</li>
+      <li><strong>Little(s): </strong>{% if profile_sister.littles %}{{ profile_sister.littles }}{% endif %}</li>
     {% endif %}
       <li></li>
       <li>{% if profile_sister.memory %}<strong>Favorite AXO Memory: </strong>{{ profile_sister.memory }}{% endif %}</li>
