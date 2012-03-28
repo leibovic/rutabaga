@@ -31,6 +31,9 @@
     {% endif %}
       <li><strong>Big: </strong>{% if profile_sister.big %}{{ profile_sister.big }}{% endif %}</li>
       <li><strong>Little: </strong>{% if profile_sister.little %}{{ profile_sister.little }}{% endif %}</li>
+    {% if user.first_name %}
+      <li><strong>Little(s): </strong>{% if profile_sister.little %}{{ profile_sister.little }}{% endif %}</li>
+    {% endif %}
       <li></li>
       <li>{% if profile_sister.memory %}<strong>Favorite AXO Memory: </strong>{{ profile_sister.memory }}{% endif %}</li>
       <li>{% if profile_sister.why_axo %}<strong>Why I Love AXO: </strong>{{ profile_sister.why_axo }}{% endif %}</li>
