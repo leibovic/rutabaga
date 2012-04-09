@@ -136,7 +136,7 @@ def sistersonly_elections_ois(request):
 @login_required
 def sistersonly_elections_ois_results(request):
   context = get_context(request)
-  context['results'] = OfficeInterest.objects.filter(is_exec=settings.EXEC_ELECTION).filter(election_term=settings.ELECTION_TERM)
+  context['results'] = OfficeInterest.objects.filter(office__is_exec=settings.EXEC_ELECTION).filter(election_term=settings.ELECTION_TERM)
   return render_to_response('sistersonly/elections_ois_results.html', context)
 
 @login_required
@@ -172,7 +172,7 @@ def sistersonly_elections_loi(request):
 @login_required
 def sistersonly_elections_loi_results(request):
   context = get_context(request)
-  context['candidates'] = Candidate.objects.filter(office__is_exec=settings.EXEC_ELECTION).filter(election_term=settings.ELECTION_TERM)
+  context['candidates'] = Candidate.objects.filter(office__is_exec=settings.EXEC_ELECTION).filter(office__election_term=settings.ELECTION_TERM)
   try:
     context['loi_results_open'] = settings.LOI_RESULTS_OPEN
   except:
@@ -220,7 +220,7 @@ def sistersonly_elections_slating(request):
 
     context['success'] = True
   else:
-    context['candidates'] = Candidate.objects.filter(office__is_exec=settings.EXEC_ELECTION).filter(election_term=settings.ELECTION_TERM)
+    context['candidates'] = Candidate.objects.filter(office__is_exec=settings.EXEC_ELECTION).filter(office__election_term=settings.ELECTION_TERM)
 
   return render_to_response('sistersonly/elections_slating.html', RequestContext(request, context))
 
