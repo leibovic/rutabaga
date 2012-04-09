@@ -136,7 +136,7 @@ def sistersonly_elections_ois(request):
 @login_required
 def sistersonly_elections_ois_results(request):
   context = get_context(request)
-  context['results'] = OfficeInterest.objects.filter(office__is_exec=settings.EXEC_ELECTION)
+  context['results'] = OfficeInterest.objects.filter(office__is_exec=settings.EXEC_ELECTION).filter(election_term=settings.ELECTION_TERM)
   return render_to_response('sistersonly/elections_ois_results.html', context)
 
 @login_required
@@ -164,7 +164,7 @@ def sistersonly_elections_loi(request):
   else:
     form = CandidateForm()
 
-  form.fields['office'].queryset = Office.objects.filter(is_exec=settings.EXEC_ELECTION).order_by('title')
+  form.fields['office'].queryset = Office.objects.filter(is_exec=settings.EXEC_ELECTION).filter(election_term=settings.ELECTION_TERM).order_by('title')
   form.fields['sisters'].queryset = Sister.objects.exclude(status=1).order_by('user__last_name')
   context['form'] = form
   return render_to_response('sistersonly/elections_loi.html', RequestContext(request, context))
@@ -172,7 +172,7 @@ def sistersonly_elections_loi(request):
 @login_required
 def sistersonly_elections_loi_results(request):
   context = get_context(request)
-  context['candidates'] = Candidate.objects.filter(office__is_exec=settings.EXEC_ELECTION)
+  context['candidates'] = Candidate.objects.filter(office__is_exec=settings.EXEC_ELECTION).filter(election_term=settings.ELECTION_TERM)
   try:
     context['loi_results_open'] = settings.LOI_RESULTS_OPEN
   except:
@@ -199,7 +199,7 @@ def sistersonly_elections_slating(request):
     return render_to_response('sistersonly/elections_slating.html', RequestContext(request, context))
 
   if request.method == 'POST':
-    offices = Office.objects.filter(is_exec=settings.EXEC_ELECTION)
+    offices = Office.objects.filter(is_exec=settings.EXEC_ELECTION).filter(election_term=settings.ELECTION_TERM)
     for office in offices:
       try: # Get the first candidate choice
         id1 = request.POST[str(office.id)+"-1"];
@@ -220,7 +220,7 @@ def sistersonly_elections_slating(request):
 
     context['success'] = True
   else:
-    context['candidates'] = Candidate.objects.filter(office__is_exec=settings.EXEC_ELECTION)
+    context['candidates'] = Candidate.objects.filter(office__is_exec=settings.EXEC_ELECTION).filter(election_term=settings.ELECTION_TERM)
 
   return render_to_response('sistersonly/elections_slating.html', RequestContext(request, context))
 
@@ -231,7 +231,7 @@ def sistersonly_elections_slating_results(request):
   context['can_view'] = request.user.is_staff
 
   results = []
-  offices = Office.objects.filter(is_exec=settings.EXEC_ELECTION).order_by('title')
+  offices = Office.objects.filter(is_exec=settings.EXEC_ELECTION).filter(election_term=settings.ELECTION_TERM).order_by('title')
   for office in offices:
     # Count the number of votes for each candidate
     # Example: votes = [{'candidate__count': 2, 'candidate': 1}, ... ]
