@@ -136,7 +136,7 @@ def sistersonly_elections_ois(request):
 @login_required
 def sistersonly_elections_ois_results(request):
   context = get_context(request)
-  context['results'] = OfficeInterest.objects.filter(office__is_exec=settings.EXEC_ELECTION).filter(election_term=settings.ELECTION_TERM)
+  context['results'] = OfficeInterest.objects.filter(office__is_exec=settings.EXEC_ELECTION).filter(office__election_term=settings.ELECTION_TERM)
   return render_to_response('sistersonly/elections_ois_results.html', context)
 
 @login_required
