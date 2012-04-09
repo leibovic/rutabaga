@@ -111,7 +111,11 @@ def sistersonly_elections_ois(request):
     context['ois_closed'] = True
     return render_to_response("sistersonly/elections_ois.html", RequestContext(request, context))
 
-  offices = Office.objects.filter(is_exec=settings.EXEC_ELECTION).filter(election_term=settings.ELECTION_TERM)
+  #trying to filter out 
+  #sister = context['sister']
+
+  non_election_term = 1 - settings.ELECTION_TERM
+  offices = Office.objects.filter(is_exec=settings.EXEC_ELECTION).exclude(election_term=non_election_term)
   context['offices'] = offices
 
   if request.method == 'POST':
