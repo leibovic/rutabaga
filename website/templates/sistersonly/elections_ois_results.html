@@ -13,7 +13,7 @@
       <th>Interested?</th>
     </tr>
     {% for result in results|dictsort:"sort_rank" %}
-    {% if result.interest != No %}
+    {% if result.interest|interest != No %}
     <tr>
       <td>{{ result.office }}</td>
       <td>{{ result.sister }}</td>
