@@ -13,11 +13,13 @@
       <th>Interested?</th>
     </tr>
     {% for result in results|dictsort:"sort_rank" %}
+    {% if result.interest != "No" %}
     <tr>
       <td>{{ result.office }}</td>
       <td>{{ result.sister }}</td>
       <td>{{ result.interest|interest }}</td>
     </tr>
+    {% endif %}
     {% endfor %}
   </table>
 </div>
