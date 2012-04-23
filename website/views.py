@@ -240,6 +240,7 @@ def sistersonly_elections_slating_results(request):
   context['can_view'] = request.user.is_staff
 
   results = []
+  non_election_term = 1 - settings.ELECTION_TERM
   offices = Office.objects.filter(is_exec=settings.EXEC_ELECTION).exclude(election_term=non_election_term).order_by('title')
   for office in offices:
     # Count the number of votes for each candidate
