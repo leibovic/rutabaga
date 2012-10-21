@@ -115,7 +115,7 @@ def sistersonly_elections_ois(request):
   #sister = context['sister']
 
   non_election_term = 1 - settings.ELECTION_TERM
-  offices = Office.objects.filter(is_exec=settings.EXEC_ELECTION).exclude(election_term=non_election_term)
+  offices = Office.objects.filter(is_exec=settings.EXEC_ELECTION).exclude(election_term__exact=non_election_term)
   context['offices'] = offices
 
   if request.method == 'POST':
