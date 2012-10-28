@@ -56,12 +56,14 @@ def sistersonly_directory(request):
   context['sisters'] = Sister.objects.exclude(status=1)
   return render_to_response('sistersonly/directory.html', context)
 
+# @Deprecated
 @login_required
 def sistersonly_events(request):
   context = get_context(request)
   context['events'] = Event.objects.all()
   return render_to_response('sistersonly/events.html', context)
 
+# @Deprecated
 @login_required
 def sistersonly_events_attendance(request, event_id):
   context = get_context(request)
