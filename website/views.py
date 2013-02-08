@@ -84,6 +84,13 @@ def sistersonly_events_attendance(request, event_id):
   return render_to_response('sistersonly/events_attendance.html', RequestContext(request, context))
 
 @login_required
+def sistersonly_attendance(request):
+  context = get_context(request)
+  sister = context['sister']
+  return render_to_response('sistersonly/attendance.html', context)
+  
+
+@login_required
 def sistersonly_feedback(request):
   context = get_context(request)
   if request.method == 'POST':
@@ -239,7 +246,7 @@ def sistersonly_elections_slating(request):
 def sistersonly_elections_slating_results(request):
   context = get_context(request)
   # TODO: This should be done in the template, and with a more specific permission group
-  context['can_view'] = request.user.is_staff
+  context['can_view'] = request.user.is_superuser
 
   results = []
   non_election_term = 1 - settings.ELECTION_TERM
