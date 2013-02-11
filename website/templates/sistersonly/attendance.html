@@ -1,0 +1,23 @@
+{% extends "sistersonly/base.html" %}
+
+{% block title %}Your Attendance &ndash; {% endblock %}
+
+{% block main %}
+
+<div class="content">
+  <h1 class="sister-name">Positive Points for {{ sister.full_name }}</h1>
+  <div id="attendance"> Loading...
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function postAttendance(attendance){
+document.getElementById("attendance").innerHTML=attendance;
+}
+</script>
+<script src="https://script.google.com/macros/s/AKfycbyIN3jp3Tvyoh73d1CUDUHOS7gwtX0qQcyEL752lR4smlZudGE/exec?first={{ sister.user.first_name }}&last={{ sister.user.last_name }}&prefix=postAttendance">
+</script>
+{% endblock %}
