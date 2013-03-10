@@ -5,7 +5,7 @@
 #ribbon {width:111px;height:111px;position:absolute;top:-4px;left:-4px;background:url(ribbon.png) no-repeat;z-index:7;}
         
 #slider {
-    width:700px;height:306px;/* Make it the same size as your images */
+    width:700px;height:350px;/* Make it the same size as your images */
 	background:#fff url(js-image-slider/loading.gif) no-repeat 50% 50%;
 	position:relative;
 	margin:0 auto;/*make the image slider center-aligned */
