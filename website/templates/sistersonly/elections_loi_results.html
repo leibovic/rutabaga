@@ -9,7 +9,7 @@
 
 <div class="content">
   {% if loi_results_open %}
-  <p>For your reference, all the submitted LOIs are available below. <a href="/sistersonly/elections/slating">Slating</a> will happen in chapter on Sunday, April 22.</p>
+  <p>For your reference, all the submitted LOIs are available below.</p>
   {% for office in office_list %}
     <h2 class="loi-results-office">{{ office.grouper }}</h2>
     <p class="loi-results-office-description">{{ office.grouper.description }}</h2>
