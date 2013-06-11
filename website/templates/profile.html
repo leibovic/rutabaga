@@ -8,9 +8,8 @@
 <table class="sister-profile-container">
   <tr>
   <td class="sister-photo-container">
-    {% if profile_sister.photo_url %}{% if profile_sister.status != 3 %}
+    {% if profile_sister.photo_url %}
     <img class="sister-photo image-shadow" src="http://axo.scripts.mit.edu/{{ profile_sister.photo_url }}"/>
-    {% endif %}
     {% else %}
     <img class="sister-photo image-shadow" src="/static/default-avatar.jpg"/>
     {% endif %}
