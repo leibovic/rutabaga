@@ -33,9 +33,10 @@
       <li><strong>Phone Number: </strong>{% if profile_sister.phone_number %}{{ profile_sister.phone_number|phone  }}{% endif %}</li>
       <li><strong>Residence: </strong>{% if profile_sister.residence %}{{ profile_sister.residence }}{% endif %}</li>
     {% endif %}
-      <li><strong>Big: </strong>{% if profile_sister.big %}<a href="/sisters/{{ profile_sister.big.id }}">{{ profile_sister.big }}</a>{% endif %}</li>
+    
+      <li><strong>Big: </strong>{% if profile_sister.big %}{% if profile_sister.big.status != 3 %}<a href="/sisters/{{ profile_sister.big.id }}">{{ profile_sister.big }}</a>{% else %}PRC{% endif %}{% endif %}</li>
       <li><strong>Little(s):</strong>{% if profile_sister.littles %}
-      {% for little in profile_sister.littles.all %}<a href="/sisters/{{ little.id }}">{{ little }}</a>;{% endfor %} {% endif %}</li>
+      {% for little in profile_sister.littles.all %}{% if little.status != 3 %}<a href="/sisters/{{ little.id }}">{{ little }}</a>;{% else %}PRC{% endif %}{% endfor %} {% endif %}</li>
     
       <li></li>
       <li>{% if profile_sister.memory %}<strong>Favorite AXO Memory: </strong>{{ profile_sister.memory }}{% endif %}</li>
