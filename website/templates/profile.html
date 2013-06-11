@@ -8,7 +8,7 @@
 <table class="sister-profile-container">
   <tr>
   <td class="sister-photo-container">
-    {% if profile_sister.photo_url %}
+    {% if profile_sister.photo_url && profile_sister.status != 3 %}
     <img class="sister-photo image-shadow" src="http://axo.scripts.mit.edu/{{ profile_sister.photo_url }}"/>
     {% else %}
     <img class="sister-photo image-shadow" src="/static/default-avatar.jpg"/>
@@ -16,7 +16,6 @@
   </td>
   
   <td class="sister-details-container">
-  {% if profile_sister.status != 3 %}
     <h1 class="sister-name">{{ profile_sister.full_name }}</h1>
     {% if profile_sister == sister %}
     <h2><a href="/sisters/profile/">Edit your profile</a></h2>
@@ -46,9 +45,7 @@
       <li>{% if profile_sister.why_axo %}<strong>Why I Love AXO: </strong>{{ profile_sister.why_axo }}{% endif %}</li>
       <li>{% if profile_sister.what_axo_means %}<strong>What AXO Means to Me: </strong>{{ profile_sister.what_axo_means }}{% endif %}</li>
 
-  {% else %}
-    <h2> Sorry this sister is a PRC. </h2>
-  <% endif %>
+
     
     </ul>  
   </td>
