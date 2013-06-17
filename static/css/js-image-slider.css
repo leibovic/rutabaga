@@ -38,20 +38,21 @@ div.mc-caption-bg, div.mc-caption-bg2 {
 	font-size: 0;
 }
 div.mc-caption-bg {
-	background-color:black;
+	background-color:white;
 }
 div.mc-caption {
-	font: bold 14px/20px Arial;
-	color:#EEE;
+	font: 14px/20px Arial;
+	color:#2E2E2E;
 	z-index:4;
 	padding:10px 0;/*Adding a padding-left or padding-right here will make the caption area wider than its background. Sometimes you may need to define its width again here to keep it the same width as its background area (div.mc-caption-bg).*/
 	text-align:center;
 }
 div.mc-caption a {
-	color:#FB0;
+	color:#BC4956;
 }
 div.mc-caption a:hover {
-	color:#DA0;
+	color:#BC4956;
+	font-style: bold;
 }
 
 /* ------ built-in navigation bullets wrapper ------*/
