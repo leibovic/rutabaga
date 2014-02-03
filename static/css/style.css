@@ -333,7 +333,8 @@ img {
 /* main page */
 
 #main-table {
-  margin: auto 0;
+  margin: 0 auto;
+  width: 700px;
 }
 
 #intro-blurb {
