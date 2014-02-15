@@ -16,6 +16,7 @@
  * v1.6.1 2010-09-17 | Authors: Eric Meyer & Richard Clark
  * html5doctor.com/html-5-reset-stylesheet/
  */
+@import url(http://fonts.googleapis.com/css?family=Lato);
 
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -151,6 +152,7 @@ button {  width: auto; overflow: visible; }
 body, select, input, textarea {
   /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */
   color: #444;
+  font-family: 'Lato', sans-serif;
   /* Set your base font here, to apply evenly */
   /* font-family: Georgia, serif;  */
 }
