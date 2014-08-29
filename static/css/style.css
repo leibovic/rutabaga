@@ -16,7 +16,7 @@
  * v1.6.1 2010-09-17 | Authors: Eric Meyer & Richard Clark
  * html5doctor.com/html-5-reset-stylesheet/
  */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,700);
 
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -170,7 +170,7 @@ a:hover { color: #bc4956; }
  */
 
 body {
-  background-image: url("/static/background.jpg");
+  background-image: url("/static/background2.png");
 }
 
 #container {
@@ -255,7 +255,6 @@ footer a {
 .navigation .dropdown {
   position: absolute;
   top: 100%;
-  left: 0;
   visibility: hidden;
   margin: 0;
   z-index: 999;
@@ -363,7 +362,32 @@ img {
   font-weight: normal;
   color: #495c23;
 }
+/* Red Divs */
 
+#headerDivImg {
+			height: 20px;
+			background-color: #bc4956;
+			padding: 5px 15px;
+			margin: 10px 0;
+			color: white;
+		    border-radius: 6em;
+		}
+		#headerDivImg a, #headerDivImg img {
+			float: right;
+			max-height: 20px;
+		}
+		
+		#titleTextImg {
+			display: inline-block;
+			font-size: 120%;
+			font-weight: bold;
+		}
+		.wrapper { float:left; width: 50%; }
+		}
+		.small_img {
+			max-width: 150px;
+			margin-top:20px;
+		}
 /* sisters */
 
 #sister-table {
