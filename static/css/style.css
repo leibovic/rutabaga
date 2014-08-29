@@ -170,7 +170,7 @@ a:hover { color: #bc4956; }
  */
 
 body {
-  background-image: url("/static/background2.png");
+  background-image: url("/static/background.jpg");
 }
 
 #container {
@@ -331,6 +331,17 @@ img {
   max-width: 200px;
 }
 
+/* For officer pics on /sisters/officers */
+.offpic {
+  max-height: 200px;
+  display: inline;
+}
+
+.offdescription {
+  display: inline-block;
+  width: 60%;
+  margin: 20px;
+}
 /* main page */
 
 #main-table {

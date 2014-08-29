@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-se.html" %}
+{% extends "base.html" %}
 
 {% block secondary_navigation %}
 <ul class="navigation secondary-navigation">
@@ -30,36 +29,3 @@ se.html" %}
   </li>
 </ul>
 {% endblock %}
-
-=======
-{% extends "base.html" %}
-
-{% block secondary_navigation %}
-<ul class="navigation secondary-navigation">
-  <!-- location attribute is the path stripped of '/' (used to indicate current page)-->
-  <li location="sistersonlyevents"><a href="/sistersonly/attendance/">Attendance</a></li>
-  <li location="sistersonlydirectory"><a href="/sistersonly/directory/">Directory</a></li>
-  <li location="sistersonlyelections">
-    <a href="/sistersonly/elections/">Elections</a>
-    <ul class="dropdown">
-      <li><a href="/sistersonly/officers2013/">Officer Structure</a></li>
-      <li><a href="/sistersonly/elections/ois/">OIS Submission</a></li>
-      <li><a href="/sistersonly/elections/loi/">LOI Submission</a></li>
-      <li><a href="/sistersonly/elections/loi/results/">Submitted LOIs</a></li>    
-      <li><a href="/sistersonly/elections/slating/">Slating</a></li>    
-    </ul>
-  </li>
-  <li location="sistersonlyfeedback"><a href="/sistersonly/feedback/">Feedback</a></li>
-  <li location="sistersonlyresources">
-    <a href="/sistersonly/">AXΩ Resources</a>
-    <ul class="dropdown">
-      <li><a href="/sistersonly/house/">House</a></li>
-      <li><a href="/sistersonly/communication/">Communication</a></li>
-      <li><a href="/sistersonly/ID/">Intellectual Development</a></li>
-      <li><a href="/sistersonly/policies/">Policies</a></li>
-	  <li><a href="/sistersonly/faq/">FAQ</a></li>
-    </ul>
-  </li>
-</ul>
-{% endblock %}
->>>>>>> c7f3aaa2c11a9ef8bb5f961c5ebaf1c90c37a7c3
