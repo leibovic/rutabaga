@@ -5,6 +5,7 @@
 <!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
+  <meta name="google-site-verification" content="Z_pBTwrXuyVGKQx1oNPnqOMYaU3CtXwbbBkpANGmwQ0" />
   <meta charset="utf-8">
 
   <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
@@ -17,7 +18,12 @@
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  
+  <!-- Make sister profile pages, or any pages un-Google indexed -->
+  {% if no_search_index %}
+    <meta name="robots" content="noindex">
+  {% endif %}
+  
   <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
   <link rel="icon" sizes="64" href="/static/lyre.png">
 
@@ -35,7 +41,7 @@
     <header>
       <span id="login-info">
         {% if user.first_name %}
-          Welcome, <a href="/sistersonly/">{{ user.first_name }}</a>. <a href="/accounts/logout">Log out</a>.
+          Welcome, <a href="/sisters/profile">{{ user.first_name }}</a>. <a href="/accounts/logout">Log out</a>.
         {% else %}
           You are not logged in. <a href="/accounts/login">Log in</a>.
         {% endif %}
