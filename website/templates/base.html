@@ -20,9 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Make sister profile pages, or any pages un-Google indexed -->
-  {% if no_search_index %}
-    <meta name="robots" content="noindex">
-  {% endif %}
+  {% block no_search_index %}{% endblock %}
   
   <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
   <link rel="icon" sizes="64" href="/static/lyre.png">
